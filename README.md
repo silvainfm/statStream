@@ -1,2 +1,2 @@
 # TradingBot
-Cryptocurrency trading bot
+Cryptocurrency trading bot, working on adding more trading features such as support flip... 
