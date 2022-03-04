@@ -2,6 +2,7 @@ import pandas as pd
 import streamlit as st
 import pdfkit as pdf
 import streamlit_authenticator as stauth
+from pathlib import Path
 
 # be able to select each company
 # figure out the score filtering 
@@ -30,8 +31,9 @@ if authentication_status:
     # ---- READ EXCEL ----
     @st.cache
     def get_data_from_excel(sheet):
+        path_excel = Path(__file__).parents[1] / 'chasin/pdf_analysis212c.xlsx'
         df = pd.read_excel(
-            io = 'https://github.com/silvainfm/TradingBot/blob/main/chasin/pdf_analysis212c.xlsx',
+            io = path_excel,
             engine = 'openpyxl',
             sheet_name = sheet)
         df = df.astype(str)
