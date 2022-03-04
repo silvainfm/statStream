@@ -31,7 +31,7 @@ if authentication_status:
     @st.cache
     def get_data_from_excel(sheet):
         df = pd.read_excel(
-            io = '/Users/brych/Documents/Chasetek/Chasetek-main/Wintogether/formater/webapp/pdf_analysis212c.xlsx',
+            io = 'https://github.com/silvainfm/TradingBot/blob/main/chasin/pdf_analysis212c.xlsx',
             engine = 'openpyxl',
             sheet_name = sheet)
         df = df.astype(str)
