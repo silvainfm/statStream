@@ -10,9 +10,9 @@ from pathlib import Path
 
 st.set_page_config(page_title='Post-Show Dashboard', page_icon=':bar_chart:', layout='wide')
 
-names = ['Chris Wolfe','Nick Wolfe']
-usernames = ['cwolfe','nwolfe']
-passwords = ['1968','1999']
+names = ['Chris Wolfe','Nick Wolfe', 'Franck Brych]
+usernames = ['cwolfe','nwolfe', 'fbrych']
+passwords = ['1968','1999', '1996']
 
 hashed_passwords = stauth.hasher(passwords).generate()
 
