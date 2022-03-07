@@ -40,7 +40,9 @@ if authentication_status:
         return df
 
     # add if user gets overall or only one of the categories or 2...
+    # use second df for exports with all of the data
     df = get_data_from_excel('Sheet2')
+    df1 = get_data_from_excel('Sheet1')
     #cyber = get_data_from_excel('Cyber')
     #ucaas = get_data_from_excel('Ucaas_Ccaas')
     #data_c = get_data_from_excel('DATA Center')
@@ -70,7 +72,8 @@ if authentication_status:
         default=['1', '2', '3', '4'] )
 
     df_selection = df.query('(State == @state) & (mobility_ranking == @mobility_score) & (ucaas_ccaas_ranking == @Ucaas_score) & (cyber_ranking == @cyber_score) & (DATA_Center_ranking == @data_score)')
-
+    df1_selection = df1.query('(State == @state) & (mobility_ranking == @mobility_score) & (ucaas_ccaas_ranking == @Ucaas_score) & (cyber_ranking == @cyber_score) & (DATA_Center_ranking == @data_score)')
+         
     st.dataframe(df_selection)
 
     # CSV Download button 
@@ -190,12 +193,12 @@ if authentication_status:
         if button_pdfy:
             companies = df_selection['Company'].to_list()
             for c in companies:
-                to_pdf(df_selection, c, pdf_col_ucaas) 
+                to_pdf(df1_selection, c, pdf_col_ucaas) 
     else: 
         company = st.text_input('Which company do you want to export to PDF?')
         button_pdf = st.button('Export to PDF')
         if button_pdf: 
-            to_pdf(df_selection, company, pdf_col_ucaas)
+            to_pdf(df1_selection, company, pdf_col_ucaas)
 
 
 elif authentication_status == False:
