@@ -10,7 +10,7 @@ from pathlib import Path
 
 st.set_page_config(page_title='Post-Show Dashboard', page_icon=':bar_chart:', layout='wide')
 
-names = ['Chris Wolfe','Nick Wolfe', 'Franck Brych', 'Michael M']
+names = ['Chris Wolfe', 'Nick Wolfe', 'Franck Brych', 'Michael M']
 usernames = ['cwolfe','nwolfe', 'fbrych', 'mmarlowe']
 passwords = ['1968','1999', '1996', '2022']
 
@@ -31,7 +31,7 @@ if authentication_status:
     # ---- READ EXCEL ----
     @st.cache
     def get_data_from_excel(sheet):
-        path_excel = Path(__file__).parents[1] / 'Mar22_Show/pdf_webapp.xlsx'
+        path_excel = Path(__file__).parents[1] / 'chasin/pdf_webapp.xlsx'
         df = pd.read_excel(
             io = path_excel,
             engine = 'openpyxl',
