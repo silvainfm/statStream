@@ -3,3 +3,4 @@ streamlit==1.8.0
 pdfkit==1.0.0
 streamlit_authenticator==0.1.1
 openpyxl==3.0.9
+click<=8.0.4
