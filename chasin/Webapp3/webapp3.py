@@ -176,7 +176,7 @@ if authentication_status:
     def to_pdf(df, company, pdf_list):
         # loc the row of the company we want
         pdf1 = df.loc[df['Company'] == company]
-        pdf1 = pdf1.set_index('Company Name - Website - State')
+        # pdf1 = pdf1.set_index('Company Name - Website - State')
         pdf1 = pdf1[pdf_list]
 
         # transpose df
@@ -187,7 +187,8 @@ if authentication_status:
         pdf_name = f'{company}_report.pdf'
         pdf.from_file([f'{company}_ht.html'], pdf_name)
         return result
-
+    
+    df1_selection = df1_selection.set_index('Company Name - Website - State')
     # figure out if we want the user to be able to select the companies individually or just from the selection
     # add a yes or no line for multiple or only a single company
     # add a multiple choice between the categories for ucaas and all... 
