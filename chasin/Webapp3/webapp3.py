@@ -39,7 +39,7 @@ if authentication_status:
         df = df.astype(str)
         return df
 
-    # add if user gets overall or only one of the categories or 2...
+     # add if user gets overall or only one of the categories or 2...
     # use second df for exports with all of the data
     dfshow = get_data_from_excel('TotalShow')
     dfex = get_data_from_excel('TotalEx')
@@ -58,8 +58,6 @@ if authentication_status:
         options=dfshow['State'].unique(),
         default=dfshow['State'].unique() )
 
-# maybe add which score as a selection first and then show 
-# start with a question like which score do you wan to start filtering with 
     mobility_score = st.sidebar.multiselect('Select the Mobility score:',
         options=dfshow['mobility_ranking'].unique(),
         default=['1', '2', '3', '4'] )
@@ -75,20 +73,16 @@ if authentication_status:
     data_score = st.sidebar.multiselect('Select the Data Center score:',
         options=dfshow['DATA_Center_ranking'].unique(),
         default=['1', '2', '3', '4'] )
-  
+    
     if new == 'Yes':
-        df_selection = newshow.query('(State == @state) | (mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score)')
-        # df_selection = newshow.query('(State == @state) & (mobility_ranking == @mobility_score) & (ucaas_ccaas_ranking == @ucaas_score) & (cyber_ranking == @cyber_score) & (DATA_Center_ranking == @data_score)')
+        df_selection = newshow.query('(State == @state) & (mobility_ranking == @mobility_score) & (ucaas_ccaas_ranking == @ucaas_score) & (cyber_ranking == @cyber_score) & (DATA_Center_ranking == @data_score)')
     else:
-        df_selection = dfshow.query('(State == @state) | (mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score)')
-        # df_selection = dfshow.query('(State == @state) & (mobility_ranking == @mobility_score) & (ucaas_ccaas_ranking == @ucaas_score) & (cyber_ranking == @cyber_score) & (DATA_Center_ranking == @data_score)')
+        df_selection = dfshow.query('(State == @state) & (mobility_ranking == @mobility_score) & (ucaas_ccaas_ranking == @ucaas_score) & (cyber_ranking == @cyber_score) & (DATA_Center_ranking == @data_score)')
 
     if new == 'Yes':
-        df1_selection = newex.query('(State == @state) | (mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score)')
-        # df1_selection = newex.query('(State == @state) & (mobility_ranking == @mobility_score) & (ucaas_ccaas_ranking == @ucaas_score) & (cyber_ranking == @cyber_score) & (DATA_Center_ranking == @data_score)')
+        df1_selection = newex.query('(State == @state) & (mobility_ranking == @mobility_score) & (ucaas_ccaas_ranking == @ucaas_score) & (cyber_ranking == @cyber_score) & (DATA_Center_ranking == @data_score)')
     else: 
-        df1_selection = dfex.query('(State == @state) | (mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score)')
-        # df1_selection = dfex.query('(State == @state) & (mobility_ranking == @mobility_score) & (ucaas_ccaas_ranking == @ucaas_score) & (cyber_ranking == @cyber_score) & (DATA_Center_ranking == @data_score)')
+        df1_selection = dfex.query('(State == @state) & (mobility_ranking == @mobility_score) & (ucaas_ccaas_ranking == @ucaas_score) & (cyber_ranking == @cyber_score) & (DATA_Center_ranking == @data_score)')
     
     st.dataframe(df_selection)
 
