@@ -202,7 +202,7 @@ if authentication_status:
     if company_bull == 'Current Selection':
         button_pdfy = st.button('Export selection to PDF')
         if button_pdfy:
-            companies = df_selection['Company'].to_list()
+            companies = df1_selection['Company'].to_list()
             for c in companies:
                 to_pdf(df1_selection, c, pdf_col_ucaas) 
     else: 
