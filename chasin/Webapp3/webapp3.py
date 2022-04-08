@@ -134,7 +134,7 @@ if authentication_status:
      'Cybersecurity Solutions - DevOps Security',
      'Cybersecurity Solutions - Disaster / Backup Recovery',
      'Cybersecurity Solutions - Email Security',
-     'Cybersecurity Solutions - Employee monitoring ‚ Insider Threat Detection',
+     'Cybersecurity Solutions - Employee monitoring - Insider Threat Detection',
      'Cybersecurity Solutions - Encryption',
      'Cybersecurity Solutions - Endpoint detection & response (EDR)',
      'Cybersecurity Solutions - Extended Detection and Response (XDR)',
@@ -154,15 +154,15 @@ if authentication_status:
      'Cybersecurity Solutions - Outsourced Consulting',
      'Cybersecurity Solutions - Penetration Testing and Simulation',
      'Cybersecurity Solutions - Phishing',
-     'Cybersecurity Solutions - Physical Security ‚ Surveillance and Access Control',
+     'Cybersecurity Solutions - Physical Security - Surveillance and Access Control',
      'Cybersecurity Solutions - Privileged Access Management',
      'Cybersecurity Solutions - Ransomware',
      'Cybersecurity Solutions - Risk & Compliance',
      'Cybersecurity Solutions - Security Incident Response',
-     'Cybersecurity Solutions - Security Operations Center ‚ SOC as a Service',
+     'Cybersecurity Solutions - Security Operations Center - SOC as a Service',
      'Cybersecurity Solutions - Security Rating / Benchmarking',
      'Cybersecurity Solutions - SIEM',
-     'Cybersecurity Solutions - SOAR ‚ Security Orchestration Automation and Response',
+     'Cybersecurity Solutions - SOAR - Security Orchestration Automation and Response',
      'Cybersecurity Solutions - Third Party Cyber Risk Management',
      'Cybersecurity Solutions - Threat Intelligence',
      'Cybersecurity Solutions - User behavior monitoring',
@@ -202,7 +202,7 @@ if authentication_status:
     if company_bull == 'Current Selection':
         button_pdfy = st.button('Export selection to PDF')
         if button_pdfy:
-            companies = df1_selection['Company'].to_list()
+            companies = df_selection['Company'].to_list()
             for c in companies:
                 to_pdf(df1_selection, c, pdf_col_ucaas) 
     else: 
