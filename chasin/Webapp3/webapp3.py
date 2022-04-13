@@ -10,7 +10,7 @@ from pathlib import Path
 
 st.set_page_config(page_title='Post-Show Dashboard', page_icon=':bar_chart:', layout='wide')
 
-names = ['Chris Wolfe', 'Nick Wolfe', 'Franck Brych', 'Michael M']
+names = ['Chris', 'Nick', 'Franck', 'Michael']
 usernames = ['cwolfe','nwolfe', 'fbrych', 'mmarlowe']
 passwords = ['1968','1999', '1996', '2022']
 
@@ -185,8 +185,8 @@ if authentication_status:
         # convert to html to then convert to pdf
         result = pdf1.to_html(f'{company}_ht.html', render_links = True) # look deeper into pandas tohtml to change the aspect 
         pdf_name = f'{company}_report.pdf'
-        pdf.from_file([f'{company}_ht.html'], pdf_name)
-        return result
+        pdf.from_file(result, pdf_name)
+        return pdf_name
     
     df1_selection = df1_selection.set_index('Company Name - Website - State')
     # figure out if we want the user to be able to select the companies individually or just from the selection
