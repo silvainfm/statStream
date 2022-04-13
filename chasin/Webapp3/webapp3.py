@@ -185,7 +185,7 @@ if authentication_status:
         # convert to html to then convert to pdf
         result = pdf1.to_html(f'{company}_ht.html', render_links = True) # look deeper into pandas tohtml to change the aspect 
         pdf_name = f'{company}_report.pdf'
-        pdf.from_file(result, pdf_name)
+        pdf.from_file(Path(__file__).parents[1], pdf_name)
         return pdf_name
     
     df1_selection = df1_selection.set_index('Company Name - Website - State')
