@@ -192,19 +192,19 @@ if authentication_status:
     # figure out if we want the user to be able to select the companies individually or just from the selection
     # add a yes or no line for multiple or only a single company
     # add a multiple choice between the categories for ucaas and all... 
-    company_bull = st.radio('Do you want to transfer the current selection to pdf or just one company?', ('Current Selection', '1 Company'))
+    #company_bull = st.radio('Do you want to transfer the current selection to pdf or just one company?', ('Current Selection', '1 Company'))
 
-    if company_bull == 'Current Selection':
-        button_pdfy = st.button('Export selection to PDF')
-        if button_pdfy:
-            companies = df_selection['Company'].to_list()
-            for c in companies:
-                to_pdf(df1_selection, c, pdf_col_ucaas) 
-    else: 
-        company = st.text_input('Which company do you want to export to PDF?')
-        button_pdf = st.button('Export to PDF')
-        if button_pdf: 
-            to_pdf(df1_selection, company, pdf_col_ucaas)
+    #if company_bull == 'Current Selection':
+        #button_pdfy = st.button('Export selection to PDF')
+        #if button_pdfy:
+            #companies = df_selection['Company'].to_list()
+            #for c in companies:
+               # to_pdf(df1_selection, c, pdf_col_ucaas) 
+    #else: 
+       # company = st.text_input('Which company do you want to export to PDF?')
+        #button_pdf = st.button('Export to PDF')
+       # if button_pdf: 
+          #  to_pdf(df1_selection, company, pdf_col_ucaas)
 
 
 elif authentication_status == False:
