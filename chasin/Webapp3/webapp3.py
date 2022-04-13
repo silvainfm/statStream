@@ -186,7 +186,7 @@ if authentication_status:
         result = pdf1.to_html(f'{company}_ht.html', render_links = True) # look deeper into pandas tohtml to change the aspect 
         pdf_name = f'{company}_report.pdf'
         pdf.from_file(Path(__file__).parents[1], pdf_name)
-        return pdf_name
+        return result
     
     df1_selection = df1_selection.set_index('Company Name - Website - State')
     # figure out if we want the user to be able to select the companies individually or just from the selection
