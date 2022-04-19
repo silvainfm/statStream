@@ -3,6 +3,7 @@ import streamlit as st
 import pdfkit as pdf
 import streamlit_authenticator as stauth
 from pathlib import Path
+from docxtpl import DocxTemplate
 
 # be able to select each company
 # figure out the score filtering 
