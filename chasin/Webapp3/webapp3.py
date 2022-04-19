@@ -147,7 +147,7 @@ if authentication_status:
     def to_docs(company,df1):
         df = df1[keepcols]
         to_docx = df.loc[df['Company'] == company]
-        compani = to_docx['Company'].iloc[0]
+        compani = company
         state = to_docx['State'].iloc[0]
         job_title = to_docx['Job Title'].iloc[0]
         annual_spend = to_docx['Department Spend'].iloc[0]
