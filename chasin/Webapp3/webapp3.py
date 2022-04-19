@@ -257,9 +257,9 @@ if authentication_status:
 
         # link the variables
         doc.render(context)
-        doc.save(f'{company}_report.docx')
+        #doc.save(f'{company}_report.docx')
     
-        return doc
+        return doc.save(f'{company}_report.docx')
 
 
     # figure out if we want the user to be able to select the companies individually or just from the selection
