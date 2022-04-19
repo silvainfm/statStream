@@ -270,12 +270,12 @@ if authentication_status:
     if company_bull == 'Current Selection':
         companies = df_selection['Company'].to_list()
         docs_c = [to_docs(c, df1_selection) for c in companies]
-        st.download_button(label = 'Export to Word doc', data = docs_c, mime='text/docx') #change /docx
+        st.download_button(label = 'Export to Word doc', data = docs_c) #change /docx
 
     else:
         company = st.text_input('Which company do you want to export to Word doc?')
         doc_c = to_docs(company, df1_selection)
-        st.download_button(label = 'Export to Word doc', data = doc_c, mime='text/docx')
+        st.download_button(label = 'Export to Word doc', data = doc_c)
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
