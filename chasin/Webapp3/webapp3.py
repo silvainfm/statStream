@@ -270,7 +270,7 @@ if authentication_status:
     if company_bull == 'Current Selection':
         companies = df_selection['Company'].to_list()
         docs_c = [to_docs(c, df1_selection) for c in companies]
-        st.download_button(label = 'Export to Word doc', data = docs_c, mime='text/csv') #change /docx
+        st.download_button(label = 'Export to Word doc', data = docs_c, mime='text/docx') #change /docx
 
     else:
         company = st.text_input('Which company do you want to export to Word doc?')
