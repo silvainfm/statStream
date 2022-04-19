@@ -275,7 +275,7 @@ if authentication_status:
     else:
         company = st.text_input('Which company do you want to export to Word doc?')
         doc_c = to_docs(company, df1_selection)
-        st.download_button(label = 'Export to Word doc', data = doc_c, mime='image/png')
+        st.download_button(label = 'Export to Word doc', data = doc_c, file_name='{company}_report.docx', mime='image/png')
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
