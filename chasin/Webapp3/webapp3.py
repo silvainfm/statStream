@@ -4,6 +4,7 @@ import streamlit as st
 import streamlit_authenticator as stauth
 from pathlib import Path
 from docxtpl import DocxTemplate
+import docx
 
 # be able to select each company
 # figure out the score filtering 
@@ -76,14 +77,14 @@ if authentication_status:
         default=['1', '2', '3', '4'] )
     
     if new == 'Yes':
-        df_selection = newshow.query('(State == @state) & (mobility_ranking == @mobility_score) & (ucaas_ccaas_ranking == @ucaas_score) & (cyber_ranking == @cyber_score) & (DATA_Center_ranking == @data_score)')
+        df_selection = newshow.query('(State == @state) | (mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score)')
     else:
-        df_selection = dfshow.query('(State == @state) & (mobility_ranking == @mobility_score) & (ucaas_ccaas_ranking == @ucaas_score) & (cyber_ranking == @cyber_score) & (DATA_Center_ranking == @data_score)')
+        df_selection = dfshow.query('(State == @state) | (mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score)')
 
     if new == 'Yes':
-        df1_selection = newex.query('(State == @state) & (mobility_ranking == @mobility_score) & (ucaas_ccaas_ranking == @ucaas_score) & (cyber_ranking == @cyber_score) & (DATA_Center_ranking == @data_score)')
+        df1_selection = newex.query('(State == @state) | (mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score)')
     else: 
-        df1_selection = dfex.query('(State == @state) & (mobility_ranking == @mobility_score) & (ucaas_ccaas_ranking == @ucaas_score) & (cyber_ranking == @cyber_score) & (DATA_Center_ranking == @data_score)')
+        df1_selection = dfex.query('(State == @state) | (mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score)')
     
     st.dataframe(df_selection)
 
