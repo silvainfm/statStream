@@ -1,6 +1,6 @@
 import pandas as pd
 import streamlit as st
-import pdfkit as pdf
+# import pdfkit as pdf
 import streamlit_authenticator as stauth
 from pathlib import Path
 from docxtpl import DocxTemplate
@@ -15,12 +15,12 @@ names = ['Chris', 'Nick', 'Franck', 'Michael']
 usernames = ['cwolfe','nwolfe', 'fbrych', 'mmarlowe']
 passwords = ['1968','1999', '1996', '2022']
 
-hashed_passwords = stauth.hasher(passwords).generate()
+hashed_passwords = stauth.Hasher(passwords).generate()
 
-authenticator = stauth.authenticate(names,usernames,hashed_passwords,
+authenticator = stauth.Authenticate(names,usernames,hashed_passwords,
     'cookie_postshowchasing','keyY1963chasinGthEshoW',cookie_expiry_days=15)
 
-name, authentication_status = authenticator.login('Login','main')
+name,authentication_status, username = authenticator.login('Login','main')
 
 if authentication_status:
     # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
