@@ -1,6 +1,5 @@
 import pandas as pd
 import streamlit as st
-# import pdfkit as pdf
 import streamlit_authenticator as stauth
 from pathlib import Path
 from docxtpl import DocxTemplate
