@@ -20,7 +20,7 @@ hashed_passwords = stauth.hasher(passwords).generate()
 authenticator = stauth.authenticate(names,usernames,hashed_passwords,
     'cookie_postshowchasing','keyY1963chasinGthEshoW',cookie_expiry_days=15)
 
-name,authentication_status, username = authenticator.login('Login','main')
+name,authentication_status = authenticator.login('Login','main')
 
 if authentication_status:
     # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
