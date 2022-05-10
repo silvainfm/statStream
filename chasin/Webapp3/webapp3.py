@@ -15,9 +15,9 @@ names = ['Chris', 'Nick', 'Franck', 'Michael']
 usernames = ['cwolfe','nwolfe', 'fbrych', 'mmarlowe']
 passwords = ['1968','1999', '1996', '2022']
 
-hashed_passwords = stauth.Hasher(passwords).generate()
+hashed_passwords = stauth.hasher(passwords).generate()
 
-authenticator = stauth.Authenticate(names,usernames,hashed_passwords,
+authenticator = stauth.authenticate(names,usernames,hashed_passwords,
     'cookie_postshowchasing','keyY1963chasinGthEshoW',cookie_expiry_days=15)
 
 name,authentication_status, username = authenticator.login('Login','main')
