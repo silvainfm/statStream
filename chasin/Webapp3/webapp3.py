@@ -5,9 +5,7 @@ from pathlib import Path
 from docxtpl import DocxTemplate
 import docx
 
-# be able to select each company
 # figure out the score filtering 
-# and only show the company name the score and the notes 
 
 st.set_page_config(page_title='Post-Show Dashboard', page_icon=':bar_chart:', layout='wide')
 
@@ -40,19 +38,16 @@ if authentication_status:
         df = df.astype(str)
         return df
 
-     # add if user gets overall or only one of the categories or 2...
+    # add if user gets overall or only one of the categories or 2...
     # use second df for exports with all of the data
     dfshow = get_data_from_excel('TotalShow')
     dfex = get_data_from_excel('TotalEx')
     newshow = get_data_from_excel('NewShow')
     newex = get_data_from_excel('NewEx')
-    #ucaas = get_data_from_excel('Ucaas_Ccaas')
-    #data_c = get_data_from_excel('DATA Center')
-    #mobility = get_data_from_excel('Mobility')
 
     # ---- SIDEBAR ----
     st.sidebar.header('Please Filter Here:')
-
+    
     new = st.sidebar.radio('Only companies new in this show?', ('Yes', 'No'))
 
     state = st.sidebar.multiselect('Select the State:',
@@ -85,7 +80,13 @@ if authentication_status:
     else: 
         df1_selection = dfex.query('(State == @state) | (mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score)')
     
+    # show the filtered dataframe
     st.dataframe(df_selection)
+    
+    # selecting rows feature and showing the selected rows for billing purposes
+    selected_indices = st.multiselect('Select rows:', df_selection.index)
+    selected_rows = df_selection.loc[selected_indices]
+    st.write('### Selected Rows', selected_rows)
 
     # CSV Download button 
     st.download_button(label = 'Export current selection to CSV', data = df1_selection.to_csv(), mime='text/csv')
