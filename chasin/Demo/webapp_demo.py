@@ -37,6 +37,7 @@ if authentication_status:
     @st.cache
     def get_data_from_excel(sheet):
         path_excel = Path(__file__).parents[1] / 'Demo/webapp_demo.xlsx' # demo file 
+
         df = pd.read_excel(
             io = path_excel,
             engine = 'openpyxl',
