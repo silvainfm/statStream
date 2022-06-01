@@ -10,8 +10,6 @@ import json
 import pickle
 import uuid
 import re
-from st_aggrid import AgGrid
-from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 st.set_page_config(page_title='Post-Show Dashboard', page_icon=':bar_chart:', layout='wide')
 
