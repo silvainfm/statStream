@@ -14,8 +14,8 @@ import re
 st.set_page_config(page_title='Post-Show Dashboard', page_icon=':bar_chart:', layout='wide')
 
 names = ['demo_email']
-usernames = ['demo_user']
-passwords = ['demo_account']
+usernames = ['demo']
+passwords = ['demo_acct']
 
 hashed_passwords = stauth.Hasher(passwords).generate()
 
