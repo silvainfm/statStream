@@ -78,7 +78,7 @@ if authentication_status:
     st.write('### Selected Rows', selected_rows)
 
     # CSV Download button 
-    st.download_button(label = 'Export current selection to CSV', data = selected_rows.to_csv(), mime='text/csv')
+    st.download_button(label = 'Export current selection to Excel', data = selected_rows.to_csv(), mime='text/csv')
 
     keepcols = [
     'Job Title',
@@ -138,7 +138,7 @@ if authentication_status:
     
         return doc
 
-    company_bull = st.radio('Do you want to transfer the current selection to Word doc or just one company?', ('Current Selection', '1 Company')) #current selection
+    company_bull = st.radio('Do you want to transfer the current selection to a Word document or just one company?', ('Current Selection', '1 Company')) #current selection
 
     def download_button(object_to_download, download_filename, button_text, pickle_it=False):
         """
