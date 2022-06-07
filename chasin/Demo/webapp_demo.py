@@ -129,7 +129,7 @@ if authentication_status:
         
 
         # import the word template
-        path = '/Users/brych/Documents/Chasetek/Mar22_Show/Chasetek/Mar22_Show/Template.docx'
+        path = Path(__file__).parents[1] / 'Demo/demo_template.docx'
         doc = DocxTemplate(path)
 
         # link the variables
@@ -232,7 +232,7 @@ if authentication_status:
         company = st.text_input('Which company do you want to export to Word doc?')
         button_pdf = st.button('Export to Word doc')
         if button_pdf: 
-            download_button(to_docs(company, selected_rows), f'{company}_report_c.docx', 'click here to download Word report')
+            download_button(to_docs(company, selected_rows), f'{company}_report.docx', 'click here to download Word report')
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
