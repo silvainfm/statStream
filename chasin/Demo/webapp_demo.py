@@ -10,8 +10,6 @@ import json
 import pickle
 import uuid
 import re
-from st_aggrid import AgGrid
-from st_aggrid.grid_options_builder import GridOptionsBuilder
 
 st.set_page_config(page_title='Post-Show Dashboard', page_icon=':bar_chart:', layout='wide')
 
@@ -100,7 +98,7 @@ if authentication_status:
 # transfers the variables in the df to word doc
     def to_docs(company,df1):
         df = df1[keepcols]
-        to_docx = df.loc[company]
+        to_docx = df.loc[[company]]
         compani = company
         state = to_docx['State'].iloc[0]
         job_title = to_docx['Job Title'].iloc[0]
