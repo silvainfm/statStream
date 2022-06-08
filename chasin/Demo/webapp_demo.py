@@ -11,7 +11,7 @@ import pickle
 import uuid
 import re
 
-st.set_page_config(page_title='Post-Show Dashboard', page_icon=':bar_chart:', layout='wide')
+st.set_page_config(page_title='Demo Dashboard', page_icon=':bar_chart:', layout='wide')
 
 names = ['demo_email']
 usernames = ['demo']
@@ -28,7 +28,7 @@ if authentication_status:
     # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 
     # ---- MAINPAGE ----
-    st.title(':bar_chart: Post-Show Dashboard')
+    st.title(':bar_chart: Demo Dashboard')
     st.markdown('##')
 
     # ---- READ EXCEL ----
