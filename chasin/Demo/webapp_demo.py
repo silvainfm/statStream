@@ -226,11 +226,18 @@ if authentication_status:
         return dl_link
 
 
-    #company = st.text_input('Which company do you want to export to Word doc?')
+    # Store word docs in github and allow the user to download from there
     company = st.selectbox('Select Company to export:', df_selection.index)
-    button_pdf = st.button('Export to Word doc')
-    if button_pdf: 
-        download_button(to_docs(company, df_selection), f'{company}_report.docx', 'Click here to download Word report')
+
+    with open('word_doc', 'rb') as file:
+     btn = st.download_button(
+             label='Export to Word Doc',
+             data=file,
+             file_name="word_doc")
+             
+    #button_pdf = st.button('Export to Word doc')
+    #if button_pdf: 
+        #download_button(to_docs(company, df_selection), f'{company}_report.docx', 'Click here to download Word report')
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
