@@ -226,7 +226,7 @@ if authentication_status:
     company = st.selectbox('Select Company to export:', df_selection.index)
     button_pdf = st.button('Export to Word doc')
     if button_pdf: 
-        download_button(to_docs(company, selected_rows), f'{company}_report.docx', 'click here to download Word report')
+        download_button(to_docs(company, df_selection), f'{company}_report.docx', 'Click here to download Word report')
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
