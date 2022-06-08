@@ -76,7 +76,7 @@ if authentication_status:
 
     selected_indices = st.multiselect('Select rows:', df_selection.index)
     selected_rows = df_selection.loc[selected_indices]
-    st.write('### Selected Rows', selected_rows)
+    st.write('### Current Selection', selected_rows)
 
     # CSV Download button 
     st.download_button(label = 'Export current selection to Excel', data = selected_rows.to_csv(), file_name='selected_companies.csv', mime='text/csv')
@@ -223,7 +223,7 @@ if authentication_status:
 
 
     #company = st.text_input('Which company do you want to export to Word doc?')
-    company = st.selectbox('Select Company:', df_selection.index)
+    company = st.selectbox('Select Company to export:', df_selection.index)
     button_pdf = st.button('Export to Word doc')
     if button_pdf: 
         download_button(to_docs(company, selected_rows), f'{company}_report.docx', 'click here to download Word report')
