@@ -11,6 +11,7 @@ import pickle
 import uuid
 import re
 
+# instead of creating the word docs in the app, have em ready in github folder
 st.set_page_config(page_title='Demo Dashboard', page_icon=':bar_chart:', layout='wide')
 
 names = ['demo_email']
@@ -138,7 +139,6 @@ if authentication_status:
     
         return doc
 
-    company_bull = st.radio('Do you want to transfer the current selection to a Word document or just one company?', ('Current Selection', '1 Company')) #current selection
 
     def download_button(object_to_download, download_filename, button_text, pickle_it=False):
         """
@@ -221,18 +221,12 @@ if authentication_status:
 
         return dl_link
 
-    #if company_bull == 'Current Selection':
-        #companies = df_selection['Company'].to_list()
-        #button_pdf1 = st.button('Export current selection to Word doc')
-        #if button_pdf1: 
-            #for c in companies: 
-               #download_button(to_docs(c, selected_rows), f'{c}_report.docx', 'click here to download Word report')
 
-    if company_bull != 'Current Selection':
-        company = st.text_input('Which company do you want to export to Word doc?')
-        button_pdf = st.button('Export to Word doc')
-        if button_pdf: 
-            download_button(to_docs(company, selected_rows), f'{company}_report.docx', 'click here to download Word report')
+    company = st.text_input('Which company do you want to export to Word doc?')
+    elected_indices = st.selectbox('Select rows:', df_selection.index)
+    button_pdf = st.button('Export to Word doc')
+    if button_pdf: 
+        download_button(to_docs(company, selected_rows), f'{company}_report.docx', 'click here to download Word report')
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
