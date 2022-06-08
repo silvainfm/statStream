@@ -222,8 +222,8 @@ if authentication_status:
         return dl_link
 
 
-    company = st.text_input('Which company do you want to export to Word doc?')
-    elected_indices = st.selectbox('Select rows:', df_selection.index)
+    #company = st.text_input('Which company do you want to export to Word doc?')
+    company = st.selectbox('Select Company:', df_selection.index)
     button_pdf = st.button('Export to Word doc')
     if button_pdf: 
         download_button(to_docs(company, selected_rows), f'{company}_report.docx', 'click here to download Word report')
