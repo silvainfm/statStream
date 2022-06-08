@@ -222,11 +222,11 @@ if authentication_status:
         return dl_link
 
     #if company_bull == 'Current Selection':
-       # companies = df_selection['Company'].to_list()
+        #companies = df_selection['Company'].to_list()
         #button_pdf1 = st.button('Export current selection to Word doc')
         #if button_pdf1: 
-           # for c in companies: 
-             #   download_button(to_docs_cont(c, selected1_rows))
+            #for c in companies: 
+               #download_button(to_docs(c, selected_rows), f'{c}_report.docx', 'click here to download Word report')
 
     if company_bull != 'Current Selection':
         company = st.text_input('Which company do you want to export to Word doc?')
