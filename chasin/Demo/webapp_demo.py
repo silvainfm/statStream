@@ -79,7 +79,11 @@ if authentication_status:
     st.write('### Current Selection', selected_rows)
 
     # CSV Download button 
-    st.download_button(label = 'Export current selection to Excel', data = selected_rows.to_csv(), file_name='selected_companies.csv', mime='text/csv')
+    st.download_button(
+        label = 'Export current selection to Excel', 
+        data = selected_rows.to_csv(), 
+        file_name='selected_companies.csv', 
+        mime='text/csv')
 
     keepcols = [
     'Job Title',
