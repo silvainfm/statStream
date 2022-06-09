@@ -241,9 +241,6 @@ if authentication_status:
              data=file,
              file_name=f'{company}_report.docx')
 
-    #button_pdf = st.button('Export to Word doc')
-    #if button_pdf: 
-        #download_button(to_docs(company, df_selection), f'{company}_report.docx', 'Click here to download Word report')
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')

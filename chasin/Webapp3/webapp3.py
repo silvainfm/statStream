@@ -261,6 +261,7 @@ if authentication_status:
         doc.save(f'{company}_report.docx')
     
         return doc.save(f'{company}_report.docx')
+    
     def download_button(object_to_download, download_filename, button_text, pickle_it=False):
         """
         Generates a link to download the given object_to_download.
