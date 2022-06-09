@@ -158,7 +158,7 @@ if authentication_status:
     'IT Leadership, Talent Management and Training Solutions',
     'IT']
 
-# transfers the variables in the df to word doc
+    # transfers the variables in the df to word doc
     def to_docs(company,df1):
         df = df1[keepcols]
         to_docx = df.loc[df['Company'] == company]
@@ -359,7 +359,14 @@ if authentication_status:
 
     # Store word docs in github and allow the user to download from there
     company = st.selectbox('Select Company to export:', df_selection.index)
-    # add a multiple choice between the categories for ucaas and all... 
+    file_path = Path(__file__).parents[1] / f'Webapp3/docs/{company}_report.docx'
+    with open(file_path, 'rb') as file:
+        wrdbtn = st.download_button(
+             label='Export to Word Doc',
+             data=file,
+             file_name=f'{company}_report.docx')
+    
+# add a multiple choice between the categories for ucaas and all... 
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
