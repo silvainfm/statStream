@@ -36,6 +36,7 @@ if authentication_status:
             engine = 'openpyxl',
             sheet_name = sheet)
         df = df.astype(str)
+        df.set_index('Company', inplace=True)
         return df
 
     # add if user gets overall or only one of the categories or 2...
@@ -88,8 +89,21 @@ if authentication_status:
     selected_rows = df_selection.loc[selected_indices]
     st.write('### Selected Rows', selected_rows)
 
-    # CSV Download button 
-    st.download_button(label = 'Export current selection to CSV', data = df1_selection.to_csv(), mime='text/csv')
+    # CSV Download buttons 
+    export_choice = st.radio('Do you want to export the current selection or all companies to Excel?', ('Current Selection', 'All companies'))
+    
+    if export_choice == 'Current Selection':
+        st.download_button(
+            label = 'Export current selection to Excel', 
+            data = df1_selection.to_csv(), 
+            file_name='selected_companies.csv', 
+            mime='text/csv')
+    else:
+        st.download_button(
+            label = 'Export all companies to Excel', 
+            data = df1_selection.to_csv(), 
+            file_name='all_companies.csv', 
+            mime='text/csv')
 
     keepcols = ['Company',
     'Job Title',
@@ -343,8 +357,8 @@ if authentication_status:
 
         return dl_link
 
-    # figure out if we want the user to be able to select the companies individually or just from the selection
-    # add a yes or no line for multiple or only a single company
+    # Store word docs in github and allow the user to download from there
+    company = st.selectbox('Select Company to export:', df_selection.index)
     # add a multiple choice between the categories for ucaas and all... 
 
 elif authentication_status == False:
