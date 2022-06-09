@@ -229,12 +229,12 @@ if authentication_status:
     # Store word docs in github and allow the user to download from there
     company = st.selectbox('Select Company to export:', df_selection.index)
 
-    with open('word_doc', 'rb') as file:
-     btn = st.download_button(
+    with open(f'{company}_doc.docx', 'rb') as file:
+        btn = st.download_button(
              label='Export to Word Doc',
              data=file,
              file_name="word_doc")
-             
+
     #button_pdf = st.button('Export to Word doc')
     #if button_pdf: 
         #download_button(to_docs(company, df_selection), f'{company}_report.docx', 'Click here to download Word report')
