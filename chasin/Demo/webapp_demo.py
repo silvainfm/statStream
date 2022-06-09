@@ -103,6 +103,18 @@ if authentication_status:
              data=file,
              file_name=f'{company}_report.docx')
 
+    # Add a way for the user to bulk download the selection or all word docs
+    # Use current selection format to do that. 
+    # use this button format for multiple buttons in a single line
+    # maybe make a function for the download button
+    #col1, col2, col3 = st.columns([1,1,1])
+
+    #with col1:
+        #st.button('1')
+    #with col2:
+        #st.button('2')
+    #with col3:
+        #st.button('3')
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
