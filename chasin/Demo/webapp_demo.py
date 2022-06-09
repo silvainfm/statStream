@@ -80,7 +80,7 @@ if authentication_status:
 
     # CSV Download buttons 
     export_choice = st.radio('Do you want to export the current selection or all companies to Excel?', ('Current Selection', 'All companies'))
-    
+
     if export_choice == 'Current Selection':
         st.download_button(
             label = 'Export current selection to Excel', 
@@ -93,65 +93,6 @@ if authentication_status:
             data = dfshow.to_csv(), 
             file_name='all_companies.csv', 
             mime='text/csv')
-
-
-
-    keepcols = [
-    'Job Title',
-    'State',
-    'Department Spend',
-    'Industry Sector',
-    'Employee Count',
-    'Annual Sales',
-    'Locations ',
-    'IT Department Size',
-    'IT Security Team Size',
-    'Contact Center Seats',
-    'Operating System',
-    'Current ERP']
-
-# transfers the variables in the df to word doc
-    def to_docs(company,df1):
-        df = df1[keepcols]
-        to_docx = df.loc[[company]]
-        compani = company
-        state = to_docx['State'].iloc[0]
-        job_title = to_docx['Job Title'].iloc[0]
-        annual_spend = to_docx['Department Spend'].iloc[0]
-        industry = to_docx['Industry Sector'].iloc[0]
-        employees = to_docx['Employee Count'].iloc[0]
-        revenue = to_docx['Annual Sales'].iloc[0]
-        locations = to_docx['Locations '].iloc[0]
-        it_count = to_docx['IT Department Size'].iloc[0]
-        security_count = to_docx['IT Security Team Size'].iloc[0]
-        contact_center = to_docx['Contact Center Seats'].iloc[0]
-        op_s = to_docx['Operating System'].iloc[0]
-        erp_v = to_docx['Current ERP'].iloc[0]
-
-        context = {'company': compani,
-        'state': state, 
-        'annual_spend': annual_spend, 
-        'job_title': job_title, 
-        'industry': industry,
-        'employees': employees, 
-        'revenue': revenue, 
-        'locations': locations, 
-        'it_count': it_count, 
-        'security_count': security_count,
-        'contact_center': contact_center, 
-        'op_s': op_s, 
-        'erp_v': erp_v}
-        
-
-        # import the word template
-        path = Path(__file__).parents[1] / 'Demo/demo_template.docx'
-        doc = DocxTemplate(path)
-
-        # link the variables
-        doc.render(context)
-        doc.save(f'{company}_report.docx')
-    
-        return doc
 
     # Store word docs in github and allow the user to download from there
     company = st.selectbox('Select Company to export:', df_selection.index)
