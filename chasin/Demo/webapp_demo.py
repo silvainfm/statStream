@@ -79,17 +79,22 @@ if authentication_status:
     st.write('### Current Selection', selected_rows)
 
     # CSV Download buttons 
-    st.download_button(
-        label = 'Export current selection to Excel', 
-        data = selected_rows.to_csv(), 
-        file_name='selected_companies.csv', 
-        mime='text/csv')
+    export_choice = st.radio('Do you want to export the current selection or all companies to Excel?', ('Current Selection', 'All companies'))
+    
+    if export_choice == 'Current Selection':
+        st.download_button(
+            label = 'Export current selection to Excel', 
+            data = selected_rows.to_csv(), 
+            file_name='selected_companies.csv', 
+            mime='text/csv')
+    else:
+        st.download_button(
+            label = 'Export all companies to Excel', 
+            data = dfshow.to_csv(), 
+            file_name='all_companies.csv', 
+            mime='text/csv')
 
-    st.download_button(
-        label = 'Export all companies to Excel', 
-        data = dfshow.to_csv(), 
-        file_name='all_companies.csv', 
-        mime='text/csv')
+
 
     keepcols = [
     'Job Title',
