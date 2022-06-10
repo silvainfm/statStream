@@ -256,7 +256,7 @@ if authentication_status:
 
         # link the variables
         doc_c.render(context_c)
-        result_path = f'{compani}_report_c.docx'
+        result_path = f'{compani}_report.docx'
         doc_c.save(result_path) 
 
         pdf_path = result_path.replace('.docx', '.pdf')
