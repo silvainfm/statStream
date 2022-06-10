@@ -81,19 +81,19 @@ if authentication_status:
     if export_choice == 'Current Selection':
         st.download_button(
             label = 'Export current selection to Excel', 
-            data = selected_rows.to_csv(), 
+            data = df1_selected.to_csv(), 
             file_name='selected_companies.csv', 
             mime='text/csv')
     else:
         st.download_button(
             label = 'Export all companies to Excel', 
-            data = dfshow.to_csv(), 
+            data = dfex.to_csv(), 
             file_name='all_companies.csv', 
             mime='text/csv')
 
     # Store word docs in github and allow the user to download from there
     company = st.selectbox('Select Company to export:', df_selection.index)
-    file_path = Path(__file__).parents[1] / f'Demo/docs/{company}_report.docx'
+    file_path = Path(__file__).parents[1] / f'Demo/docs2/{company}_report.docx'
     with open(file_path, 'rb') as file:
         btn = st.download_button(
              label='Export to Word Doc',
