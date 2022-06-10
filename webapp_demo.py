@@ -259,6 +259,10 @@ if authentication_status:
         result_path = f'{compani}_report.docx'
         doc_c.save(result_path) 
 
+        return doc_c
+
+    def pdf_conversion(company):
+        result_path = f'{company}_report.docx'
         pdf_path = result_path.replace('.docx', '.pdf')
         convert(result_path, pdf_path)
         pdf = pdf_path
