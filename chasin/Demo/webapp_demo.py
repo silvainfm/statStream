@@ -19,7 +19,9 @@ admin_passwords = ['demo_acct']
 hashed_passwords = stauth.Hasher(passwords).generate()
 
 authenticator = stauth.Authenticate(names, usernames, hashed_passwords,
-    'cOOkiE_poStSHowcHasINgAlL', 'keyY1969chasinGthEshoWsS', cookie_expiry_days=15)
+    'cOOkiE_poStSHowcHasINgAlL', 'keyY1969chasinGthEshoWsS', cookie_expiry_days=0)
+
+st.image('chasetek.jpg')
 
 name, authentication_status, username = authenticator.login('Login','main')
 
