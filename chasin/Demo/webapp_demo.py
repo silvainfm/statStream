@@ -95,12 +95,12 @@ if authentication_status:
 
     # Store word docs in github and allow the user to download from there
     company = st.selectbox('Select Company to export:', df_selection.index)
-    file_path = Path(__file__).parents[1] / f'Demo/docs2/{company}_report.docx'
+    file_path = Path(__file__).parents[1] / f'Demo/docs1/{company}_report.pdf'
     with open(file_path, 'rb') as file:
         btn = st.download_button(
-             label='Export to Word Doc',
+             label='Export to PDF',
              data=file,
-             file_name=f'{company}_report.docx')
+             file_name=f'{company}_report.pdf')
 
     # Add a way for the user to bulk download the selection or all word docs
     # Use current selection format to do that. 
