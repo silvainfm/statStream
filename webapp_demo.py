@@ -23,7 +23,7 @@ hashed_passwords = stauth.Hasher(passwords).generate()
 authenticator = stauth.Authenticate(names, usernames, hashed_passwords,
     'cOOkiE_poStSHowcHasINgAlL', 'keyY1969chasinGthEshoWsS', cookie_expiry_days=0)
 
-path_image = Path(__file__).parents[1] / 'chaseteklo.jpeg' # demo file 
+path_image = Path(__file__).parents[1] / 'chasetek.jpg' # demo file 
 st.image(path_image.name)
 
 name, authentication_status, username = authenticator.login('Login','main')
@@ -38,7 +38,7 @@ if authentication_status:
     # ---- READ EXCEL ----
     @st.cache
     def get_data_from_excel(sheet, excelFileName):
-        path_excel = Path(__file__).parents[1] / f'Demo/{excelFileName}' # demo file 
+        path_excel = Path(__file__).parents[1] / f'statStream/{excelFileName}' # demo file 
         df = pd.read_excel(
             io = path_excel,
             engine = 'openpyxl',
@@ -110,7 +110,7 @@ if authentication_status:
 
     # Store word docs in github and allow the user to download from there
     company = st.selectbox('Select Company to export:', df_selection.index)
-    file_path = Path(__file__).parents[1] / f'Demo/docs1/{company}_report.pdf'
+    file_path = Path(__file__).parents[1] / f'docs1/{company}_report.pdf'
     with open(file_path, 'rb') as file:
         btn = st.download_button(
              label='Export to PDF',
