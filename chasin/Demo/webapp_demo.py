@@ -4,12 +4,6 @@ import pandas as pd
 import streamlit as st
 import streamlit_authenticator as stauth
 from pathlib import Path
-import base64
-import os
-import json
-import pickle
-import uuid
-import re
 
 # instead of creating the word docs in the app, have em ready in github folder
 st.set_page_config(page_title='Demo Dashboard', page_icon=':bar_chart:', layout='wide')
@@ -37,7 +31,7 @@ if authentication_status:
     # ---- READ EXCEL ----
     @st.cache
     def get_data_from_excel(sheet):
-        path_excel = Path(__file__).parents[1] / 'Demo/webapp_demo.xlsx' # demo file 
+        path_excel = Path(__file__).parents[1] / 'Demo/pdf_webapp.xlsx' # demo file 
         df = pd.read_excel(
             io = path_excel,
             engine = 'openpyxl',
@@ -46,7 +40,8 @@ if authentication_status:
         df.set_index('Company', inplace=True)
         return df
 
-    dfshow = get_data_from_excel('TotalShow')
+    dfshow = get_data_from_excel('NewShow')
+    dfex = get_data_from_excel('NewEx')
     
     # ---- SIDEBAR ----
     st.sidebar.header('Please Filter Here:')
@@ -73,11 +68,13 @@ if authentication_status:
     
 
     df_selection = dfshow.query('(State == @state) & ((mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score))')
-    
+    df1_selection = dfex.query('(State == @state) & ((mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score))')
+
     st.dataframe(df_selection)
 
     selected_indices = st.multiselect('Select rows:', df_selection.index)
     selected_rows = df_selection.loc[selected_indices]
+    df1_selected = df1_selection.loc[selected_indices]
     st.write('### Current Selection', selected_rows)
 
     # CSV Download buttons 
@@ -86,19 +83,19 @@ if authentication_status:
     if export_choice == 'Current Selection':
         st.download_button(
             label = 'Export current selection to Excel', 
-            data = selected_rows.to_csv(), 
+            data = df1_selected.to_csv(), 
             file_name='selected_companies.csv', 
             mime='text/csv')
     else:
         st.download_button(
             label = 'Export all companies to Excel', 
-            data = dfshow.to_csv(), 
+            data = dfex.to_csv(), 
             file_name='all_companies.csv', 
             mime='text/csv')
 
     # Store word docs in github and allow the user to download from there
     company = st.selectbox('Select Company to export:', df_selection.index)
-    file_path = Path(__file__).parents[1] / f'Demo/docs/{company}_report.docx'
+    file_path = Path(__file__).parents[1] / f'Demo/docs2/{company}_report.docx'
     with open(file_path, 'rb') as file:
         btn = st.download_button(
              label='Export to Word Doc',
@@ -109,7 +106,7 @@ if authentication_status:
     # Use current selection format to do that. 
     # use this button format for multiple buttons in a single line
     # maybe make a function for the download button
-    #col1, col2, col3 = st.columns([1,1,1])
+    # col1, col2, col3 = st.columns([1,1,1])
 
     #with col1:
         #st.button('1')
