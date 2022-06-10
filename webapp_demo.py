@@ -109,7 +109,7 @@ if authentication_status:
             mime='text/csv')
 
     # Store word docs in github and allow the user to download from there
-    company = st.selectbox('Select Company to export:', df_selection.index)
+    company = st.selectbox('Select Company to export:', dfshow.index)
     file_path = f'docs1/{company}_report.pdf'
     with open(file_path, 'rb') as file:
         btn = st.download_button(
