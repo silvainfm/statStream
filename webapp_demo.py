@@ -5,6 +5,7 @@ import pandas as pd
 import streamlit as st
 import streamlit_authenticator as stauth
 from pathlib import Path
+from docx2pdf import convert
 
 # instead of creating the word docs in the app, have em ready in github folder
 st.set_page_config(page_title='Demo Dashboard', page_icon=':bar_chart:', layout='wide')
@@ -107,6 +108,161 @@ if authentication_status:
             data = dfex.to_csv(), 
             file_name='all_companies.csv', 
             mime='text/csv')
+
+    def to_docs_contC1(compani, df):
+        to_docx_c = df.loc[df['Company'] == compani]
+        companie = to_docx_c['Company'].iloc[0]
+        attendee = to_docx_c['C1 Full Name'].iloc[0]
+        job_title_c = to_docx_c['C1 Title'].iloc[0]
+        email = to_docx_c['C1 Primary Email'].iloc[0]
+        email1 = to_docx_c['C1 Email 1'].iloc[0]
+        email2  = to_docx_c['C1 Email 2'].iloc[0]
+        linkedin = to_docx_c['C1 LI Profile URL'].iloc[0]
+        cell = to_docx_c['C1 Phone 1'].iloc[0]
+        phone2 = to_docx_c['C1 Phone 2'].iloc[0]
+        attendee2 = to_docx_c['C2 Full Name'].iloc[0]
+        job_title_c2 = to_docx_c['C2 Title'].iloc[0]
+        email_2 = to_docx_c['C2 Primary Email'].iloc[0]
+        email1_2 = to_docx_c['C2 Email 1'].iloc[0]
+        email2_2 = to_docx_c['C2 Email 2'].iloc[0]
+        linkedin_2 = to_docx_c['C2 LI Profile URL'].iloc[0]
+        cell2 = to_docx_c['C2 Phone 1'].iloc[0]
+        phone2_2 = to_docx_c['C2 Phone 2'].iloc[0]
+        website_c = to_docx_c['Website'].iloc[0]
+        phone = to_docx_c['Company Phone 1'].iloc[0]
+        address = to_docx_c['HQ Address'].iloc[0]
+        state_c = to_docx_c['State'].iloc[0]
+        annual_spend_c = to_docx_c['Department Spend'].iloc[0]
+        industry_c = to_docx_c['Industry Sector'].iloc[0]
+        key_products_c = to_docx_c['Key Products or Services'].iloc[0]
+        employees_c = to_docx_c['Employee Count'].iloc[0]
+        revenue_c = to_docx_c['Annual Sales'].iloc[0]
+        locations_c = to_docx_c['Locations '].iloc[0]
+        it_count_c = to_docx_c['IT Department Size'].iloc[0]
+        security_count_c = to_docx_c['IT Security Team Size'].iloc[0]
+        contact_center_c = to_docx_c['Contact Center Seats'].iloc[0]
+        op_s_c = to_docx_c['Operating System'].iloc[0]
+        erp_v_c = to_docx_c['Current ERP'].iloc[0]
+        cloud_sp_c = to_docx_c['Cloud Service Provider'].iloc[0]
+        cyber_res = to_docx_c['Cybersecurity Responsibility'].iloc[0]
+        cyber_in = to_docx_c['Cyber Initiatives'].iloc[0]
+        cyber_sol = to_docx_c['Cybersecurity Solutions'].iloc[0]
+        cyber = to_docx_c['cyber'].iloc[0]
+        cloud_res = to_docx_c['Cloud Solutions Responsibility'].iloc[0]
+        cloud_in = to_docx_c['Cloud Initiatives'].iloc[0]
+        cloud_sol = to_docx_c['Which Cloud Solutions'].iloc[0]
+        cloud = to_docx_c['cloud'].iloc[0]
+        digital_res = to_docx_c['Digital Responsibility'].iloc[0]
+        digital_in = to_docx_c['Digital Initiatives'].iloc[0]
+        digital_sol = to_docx_c['Digital Solutions'].iloc[0]
+        digital = to_docx_c['digital'].iloc[0]
+        data_res = to_docx_c['Data Management Responsibility'].iloc[0]
+        data_in = to_docx_c['Data Management Initiatives'].iloc[0]
+        data_sol = to_docx_c['Data Management Solutions'].iloc[0]
+        data = to_docx_c['data'].iloc[0]
+        soft_res = to_docx_c['Software / Application Development Responsibility'].iloc[0]
+        soft_in = to_docx_c['Development Initiatives'].iloc[0]
+        soft_sol = to_docx_c['Software / Application Development Solutions'].iloc[0]
+        soft  = to_docx_c['software'].iloc[0]
+        coms_res = to_docx_c['Communication Systems Responsibility'].iloc[0]
+        coms_in = to_docx_c['Communication Initiatives'].iloc[0]
+        coms_sol = to_docx_c['Communication Systems Solutions'].iloc[0]
+        coms = to_docx_c['communication'].iloc[0]
+        network_res = to_docx_c['Network Systems Responsibility'].iloc[0]
+        network_in = to_docx_c['Network Initiatives'].iloc[0]
+        network_sol = to_docx_c['Network Systems Solutions'].iloc[0]
+        network = to_docx_c['network'].iloc[0]
+        consult_res = to_docx_c['Consulting / Outsourcing Responsibility'].iloc[0]
+        consult_in = to_docx_c['Consulting Initiatives'].iloc[0]
+        consult_sol = to_docx_c['Consulting / Outsourcing Solutions'].iloc[0]
+        consulting = to_docx_c['consulting'].iloc[0]
+        it_res = to_docx_c['IT Leadership, Talent Management and Training Responsibility'].iloc[0]
+        it_in = to_docx_c['Leadership Initiatives'].iloc[0]
+        it_sol = to_docx_c['IT Leadership, Talent Management and Training Solutions'].iloc[0]
+        it = to_docx_c['IT'].iloc[0]
+
+        context_c = {'attendee': attendee,
+        'job_title': job_title_c,
+        'email': email,
+        'email1': email1,
+        'email2': email2,
+        'phone': phone,
+        'cell': cell,
+        'phone2': phone2,
+        'linkedin': linkedin,
+        'attendee2': attendee2,
+        'job_title_c2': job_title_c2,
+        'email_2': email_2,
+        'email1_2': email1_2,
+        'email2': email2_2,
+        'phone2_2': phone2_2,
+        'cell2': cell2,
+        'linkedin2': linkedin_2,
+        'website': website_c,
+        'company': companie,
+        'address' : address,
+        'state': state_c, 
+        'annual_spend': annual_spend_c,
+        'industry': industry_c,
+        'key_products': key_products_c, 
+        'employees': employees_c, 
+        'revenue': revenue_c, 
+        'locations': locations_c, 
+        'it_count': it_count_c, 
+        'security_count': security_count_c,
+        'contact_center': contact_center_c, 
+        'op_s': op_s_c, 
+        'erp_v': erp_v_c, 
+        'cloud_sp': cloud_sp_c, 
+        'cyber_res': cyber_res, 
+        'cyber_in': cyber_in, 
+        'cyber_sol': cyber_sol, 
+        'cyber': cyber, 
+        'cloud_res': cloud_res, 
+        'cloud_in': cloud_in, 
+        'cloud_sol': cloud_sol, 
+        'cloud': cloud, 
+        'digital_res': digital_res, 
+        'digital_in': digital_in, 
+        'digital_sol': digital_sol, 
+        'digital': digital, 
+        'data_res': data_res, 
+        'data_in': data_in, 
+        'data_sol': data_sol, 
+        'data': data, 
+        'soft_res': soft_res, 
+        'soft_in': soft_in, 
+        'soft_sol': soft_sol, 
+        'soft': soft,
+        'coms_res': coms_res, 
+        'coms_in': coms_in, 
+        'coms_sol': coms_sol, 
+        'coms': coms, 
+        'network_res': network_res, 
+        'network_in': network_in, 
+        'network_sol': network_sol, 
+        'network': network, 
+        'consult_res': consult_res, 
+        'consult_in': consult_in, 
+        'consult_sol': consult_sol, 
+        'consulting': consulting, 
+        'it_res': it_res, 
+        'it_in': it_in, 
+        'it_sol': it_sol, 
+        'IT': it}
+
+        # import the word template
+        doc_c = DocxTemplate('Template_contact_table.docx')
+
+        # link the variables
+        doc_c.render(context_c)
+        result_path = f'{compani}_report_c.docx'
+        doc_c.save(result_path) 
+
+        pdf_path = result_path.replace('.docx', '.pdf')
+        convert(result_path, pdf_path)
+        pdf = pdf_path
+        return pdf
 
     # Store word docs in github and allow the user to download from there
     company = st.selectbox('Select Company to export:', dfshow.index)
