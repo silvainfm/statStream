@@ -8,7 +8,7 @@ from pathlib import Path
 from docx2pdf import convert
 
 # instead of creating the word docs in the app, have em ready in github folder
-st.set_page_config(page_title='Demo Dashboard', page_icon=':bar_chart:', layout='wide')
+st.set_page_config(page_title='Beta Dashboard', layout='wide')
 
 # https://github.com/mkhorasani/Streamlit-Authenticator
 names = ['demo_email', 'rick_sanchez']
@@ -33,7 +33,7 @@ if authentication_status:
     # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 
     # ---- MAINPAGE ----
-    st.title(':bar_chart: Demo Dashboard')
+    st.title('Beta Dashboard')
     st.markdown('##')
 
     # ---- READ EXCEL ----
