@@ -14,9 +14,9 @@ import re
 # instead of creating the word docs in the app, have em ready in github folder
 st.set_page_config(page_title='Demo Dashboard', page_icon=':bar_chart:', layout='wide')
 
-names = ['demo_email']
-usernames = ['demo']
-passwords = ['demo_acct']
+names = ['demo_email', 'rick_sanchez']
+usernames = ['demo','rsanchez']
+passwords = ['demo_acct', 'morty']
 
 hashed_passwords = stauth.Hasher(passwords).generate()
 
@@ -31,6 +31,8 @@ if authentication_status:
     # ---- MAINPAGE ----
     st.title(':bar_chart: Demo Dashboard')
     st.markdown('##')
+
+
 
     # ---- READ EXCEL ----
     @st.cache
@@ -121,3 +123,14 @@ elif authentication_status == False:
 
 elif authentication_status == None:
     st.warning('Please enter your username and password')
+
+# Improvements
+
+# Provide 2 options:
+# export en massse (all selection in one file) (MAX 10)
+# export separately 
+
+# Add logo to the page
+# Add authentication groups for different data access (Eventually different dashboards)
+## https://towardsdatascience.com/secure-your-streamlit-app-with-django-bb0bee2a6519
+## https://towardsdatascience.com/streamlit-access-control-dae3ab8b7888
