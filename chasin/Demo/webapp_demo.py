@@ -1,3 +1,4 @@
+from sys import path_importer_cache
 from docxtpl import DocxTemplate
 import docx
 import pandas as pd
@@ -33,8 +34,6 @@ if authentication_status:
     # ---- MAINPAGE ----
     st.title(':bar_chart: Demo Dashboard')
     st.markdown('##')
-
-
 
     # ---- READ EXCEL ----
     @st.cache
