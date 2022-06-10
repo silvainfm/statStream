@@ -110,7 +110,7 @@ if authentication_status:
 
     # Store word docs in github and allow the user to download from there
     company = st.selectbox('Select Company to export:', df_selection.index)
-    file_path = Path(__file__).parents[1] / f'docs1/{company}_report.pdf'
+    file_path = Path(__file__).parents[1] / f'statStream/docs1/{company}_report.pdf'
     with open(file_path, 'rb') as file:
         btn = st.download_button(
              label='Export to PDF',
