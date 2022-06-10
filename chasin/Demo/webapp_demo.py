@@ -23,7 +23,7 @@ hashed_passwords = stauth.Hasher(passwords).generate()
 authenticator = stauth.Authenticate(names, usernames, hashed_passwords,
     'cOOkiE_poStSHowcHasINgAlL', 'keyY1969chasinGthEshoWsS', cookie_expiry_days=0)
 
-path_image = Path(__file__).parents[1] / f'Demo/chasetek.jpg' # demo file 
+path_image = Path(__file__).parents[1] / f'chaseteklo.jpeg' # demo file 
 st.image(path_image.name)
 
 name, authentication_status, username = authenticator.login('Login','main')
