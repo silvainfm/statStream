@@ -29,7 +29,7 @@ if authentication_status:
     # ---- READ EXCEL ----
     @st.cache
     def get_data_from_excel(sheet):
-        path_excel = Path(__file__).parents[1] / 'Demo/webapp_demo.xlsx' # demo file 
+        path_excel = Path(__file__).parents[1] / 'Demo/pdf_webapp.xlsx' # demo file 
         df = pd.read_excel(
             io = path_excel,
             engine = 'openpyxl',
@@ -38,7 +38,8 @@ if authentication_status:
         df.set_index('Company', inplace=True)
         return df
 
-    dfshow = get_data_from_excel('TotalShow')
+    dfshow = get_data_from_excel('NewShow')
+    dfex = get_data_from_excel('NewEx')
     
     # ---- SIDEBAR ----
     st.sidebar.header('Please Filter Here:')
@@ -65,11 +66,13 @@ if authentication_status:
     
 
     df_selection = dfshow.query('(State == @state) & ((mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score))')
-    
+    df1_selection = dfex.query('(State == @state) & ((mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score))')
+
     st.dataframe(df_selection)
 
     selected_indices = st.multiselect('Select rows:', df_selection.index)
     selected_rows = df_selection.loc[selected_indices]
+    df1_selected = df1_selection.loc[selected_indices]
     st.write('### Current Selection', selected_rows)
 
     # CSV Download buttons 
