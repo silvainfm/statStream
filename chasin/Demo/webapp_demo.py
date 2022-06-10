@@ -12,6 +12,10 @@ names = ['demo_email', 'rick_sanchez']
 usernames = ['demo','rsanchez']
 passwords = ['demo_acct', 'morty']
 
+admin_names = ['rick_sanchez']
+admin_usernames = ['rsanchez']
+admin_passwords = ['morty']
+
 hashed_passwords = stauth.Hasher(passwords).generate()
 
 authenticator = stauth.Authenticate(names, usernames, hashed_passwords,
@@ -30,8 +34,8 @@ if authentication_status:
 
     # ---- READ EXCEL ----
     @st.cache
-    def get_data_from_excel(sheet):
-        path_excel = Path(__file__).parents[1] / 'Demo/pdf_webapp.xlsx' # demo file 
+    def get_data_from_excel(sheet, excelFileName):
+        path_excel = Path(__file__).parents[1] / f'Demo/{excelFileName}' # demo file 
         df = pd.read_excel(
             io = path_excel,
             engine = 'openpyxl',
@@ -40,8 +44,8 @@ if authentication_status:
         df.set_index('Company', inplace=True)
         return df
 
-    dfshow = get_data_from_excel('NewShow')
-    dfex = get_data_from_excel('NewEx')
+    dfshow = get_data_from_excel('NewShow', 'pdf_webapp1.xlsx')
+    dfex = get_data_from_excel('NewEx', 'pdf_webapp1.xlsx')
     
     # ---- SIDEBAR ----
     st.sidebar.header('Please Filter Here:')
@@ -55,7 +59,7 @@ if authentication_status:
         default=['1', '2', '3', '4'] )
 
     ucaas_score = st.sidebar.multiselect('Select the Ucaas/Ccaas score:',
-        options=dfshow['ucaas_ccaas_ranking'].unique(),
+        options=dfshow['cucaas_ranking'].unique(),
         default=['1', '2', '3', '4'] )
 
     cyber_score = st.sidebar.multiselect('Select the Cyber score:',
@@ -67,8 +71,8 @@ if authentication_status:
         default=['1', '2', '3', '4'] )
     
 
-    df_selection = dfshow.query('(State == @state) & ((mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score))')
-    df1_selection = dfex.query('(State == @state) & ((mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score))')
+    df_selection = dfshow.query('(State == @state) & ((mobility_ranking == @mobility_score) | (cucaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score))')
+    df1_selection = dfex.query('(State == @state) & ((mobility_ranking == @mobility_score) | (cucaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score))')
 
     st.dataframe(df_selection)
 
