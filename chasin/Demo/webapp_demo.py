@@ -129,5 +129,6 @@ elif authentication_status == None:
 
 # Add logo to the page
 # Add authentication groups for different data access (Eventually different dashboards)
+# Make list objects selectable elements
 ## https://towardsdatascience.com/secure-your-streamlit-app-with-django-bb0bee2a6519
 ## https://towardsdatascience.com/streamlit-access-control-dae3ab8b7888
