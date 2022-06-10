@@ -8,6 +8,7 @@ from pathlib import Path
 # instead of creating the word docs in the app, have em ready in github folder
 st.set_page_config(page_title='Demo Dashboard', page_icon=':bar_chart:', layout='wide')
 
+# https://github.com/mkhorasani/Streamlit-Authenticator
 names = ['demo_email', 'rick_sanchez']
 usernames = ['demo','rsanchez']
 passwords = ['demo_acct', 'morty']
