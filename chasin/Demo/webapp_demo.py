@@ -114,19 +114,6 @@ if authentication_status:
              data=file,
              file_name=f'{company}_report.pdf')
 
-    # Add a way for the user to bulk download the selection or all word docs
-    # Use current selection format to do that. 
-    # use this button format for multiple buttons in a single line
-    # maybe make a function for the download button
-    # col1, col2, col3 = st.columns([1,1,1])
-
-    #with col1:
-        #st.button('1')
-    #with col2:
-        #st.button('2')
-    #with col3:
-        #st.button('3')
-
 elif authentication_status == False:
     st.error('Username/password is incorrect')
 
@@ -142,5 +129,16 @@ elif authentication_status == None:
 # Add logo to the page
 # Add authentication groups for different data access (Eventually different dashboards)
 # Make list objects selectable elements
+# Add a way for the user to bulk download the selection or all word docs using current selection
+# Make a function for the download button
+# use this button format for multiple buttons in a single line
+    # col1, col2, col3 = st.columns([1,1,1])
+
+    #with col1:
+        #st.button('1')
+    #with col2:
+        #st.button('2')
+    #with col3:
+        #st.button('3')
 ## https://towardsdatascience.com/secure-your-streamlit-app-with-django-bb0bee2a6519
 ## https://towardsdatascience.com/streamlit-access-control-dae3ab8b7888
