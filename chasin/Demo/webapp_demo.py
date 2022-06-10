@@ -4,12 +4,6 @@ import pandas as pd
 import streamlit as st
 import streamlit_authenticator as stauth
 from pathlib import Path
-import base64
-import os
-import json
-import pickle
-import uuid
-import re
 
 # instead of creating the word docs in the app, have em ready in github folder
 st.set_page_config(page_title='Demo Dashboard', page_icon=':bar_chart:', layout='wide')
@@ -107,7 +101,7 @@ if authentication_status:
     # Use current selection format to do that. 
     # use this button format for multiple buttons in a single line
     # maybe make a function for the download button
-    #col1, col2, col3 = st.columns([1,1,1])
+    # col1, col2, col3 = st.columns([1,1,1])
 
     #with col1:
         #st.button('1')
