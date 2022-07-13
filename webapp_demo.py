@@ -305,3 +305,4 @@ elif authentication_status == None:
         #st.button('3')
 ## https://towardsdatascience.com/secure-your-streamlit-app-with-django-bb0bee2a6519
 ## https://towardsdatascience.com/streamlit-access-control-dae3ab8b7888
+## https://medium.com/@theprasadpatil/how-to-create-a-pdf-report-from-excel-using-python-b882c725fcf6
