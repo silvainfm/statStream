@@ -63,24 +63,19 @@ if authentication_status:
     st.sidebar.header('Please Filter Here:')
 
     state = st.sidebar.multiselect('Select the State:',
-        options=dfshow['State'].unique(),
-        default=dfshow['State'].unique() )
+        options=dfshow['State'].unique())
 
     mobility_score = st.sidebar.multiselect('Select the Mobility score:',
-        options=dfshow['mobility_ranking'].unique(),
-        default=['1', '2', '3', '4'] )
+        options=dfshow['mobility_ranking'].unique())
 
     ucaas_score = st.sidebar.multiselect('Select the Ucaas/Ccaas score:',
-        options=dfshow['ucaas_ccaas_ranking'].unique(),
-        default=['1', '2', '3', '4'] )
+        options=dfshow['ucaas_ccaas_ranking'].unique())
 
     cyber_score = st.sidebar.multiselect('Select the Cyber score:',
-        options=dfshow['cyber_ranking'].unique(),
-        default=['1', '2', '3', '4'] )
+        options=dfshow['cyber_ranking'].unique())
 
     data_score = st.sidebar.multiselect('Select the Data Center score:',
-        options=dfshow['DATA_Center_ranking'].unique(),
-        default=['1', '2', '3', '4'] )
+        options=dfshow['DATA_Center_ranking'].unique())
     
 
     df_selection = dfshow.query('(State == @state) & ((mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score))')
