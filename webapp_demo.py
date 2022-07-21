@@ -65,17 +65,17 @@ if authentication_status:
     state = st.sidebar.multiselect('Select the State:',
         options=dfshow['State'].unique())
 
-    mobility_score = st.sidebar.multiselect('Select the Mobility score:',
-        options=dfshow['mobility_ranking'].unique())
+    mobility_score = st.sidebar.multiselect('Are you selling Mobility Solutions?',
+        options='Yes', 'No')
 
-    ucaas_score = st.sidebar.multiselect('Select the Ucaas/Ccaas score:',
-        options=dfshow['ucaas_ccaas_ranking'].unique())
+    ucaas_score = st.sidebar.multiselect('Are you selling Ucaas/Ccaas solutions?',
+        options='Yes', 'No')
 
-    cyber_score = st.sidebar.multiselect('Select the Cyber score:',
-        options=dfshow['cyber_ranking'].unique())
+    cyber_score = st.sidebar.multiselect('Are you selling Cybersecurity solutions?',
+        options='Yes', 'No')
 
-    data_score = st.sidebar.multiselect('Select the Data Center score:',
-        options=dfshow['DATA_Center_ranking'].unique())
+    data_score = st.sidebar.multiselect('Are you selling the Data Center?',
+        options='Yes', 'No')
     
 
     df_selection = dfshow.query('(State == @state) & ((mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score))')
