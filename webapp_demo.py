@@ -67,19 +67,35 @@ if authentication_status:
 
     mobility_score = st.sidebar.radio('Are you selling Mobility Solutions?',
         ['Yes', 'No'])
+    if mobility_score == 'Yes':
+        mob = '1'
+    else:
+        mob ='0'
 
     ucaas_score = st.sidebar.radio('Are you selling Ucaas/Ccaas solutions?',
         ['Yes', 'No'])
+    if ucaas_score == 'Yes':
+        uca = '1'
+    else:
+        uca ='0'
 
     cyber_score = st.sidebar.radio('Are you selling Cybersecurity solutions?',
         ['Yes', 'No'])
+    if cyber_score == 'Yes':
+        cyb = '1'
+    else:
+        cyb ='0'
 
     data_score = st.sidebar.radio('Are you selling the Data Center?',
         ['Yes', 'No'])
+    if data_score == 'Yes':
+        data = '1'
+    else:
+        data ='0'
     
 
-    df_selection = dfshow.query('(State == @state) & ((mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score))')
-    df1_selection = dfex.query('(State == @state) & ((mobility_ranking == @mobility_score) | (ucaas_ccaas_ranking == @ucaas_score) | (cyber_ranking == @cyber_score) | (DATA_Center_ranking == @data_score))')
+    df_selection = dfshow.query('(State == @state) & ((mobility_ranking == @mob) | (ucaas_ccaas_ranking == @uca) | (cyber_ranking == @cyb) | (DATA_Center_ranking == @data))')
+    df1_selection = dfex.query('(State == @state) & ((mobility_ranking == @mob) | (ucaas_ccaas_ranking == @uca) | (cyber_ranking == @cyb) | (DATA_Center_ranking == @data))')
 
     st.dataframe(df_selection)
 
