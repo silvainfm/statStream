@@ -95,9 +95,19 @@ if authentication_status:
     else:
         data ='0'
     
+    df_selection = dfshow.query('(State == @state)')
+    #  & ((mobility_ranking == @mob) | (ucaas_ccaas_ranking == @uca) | (cyber_ranking == @cyb) | (DATA_Center_ranking == @data))
+    df1_selection = dfex.query('(State == @state)')
+    # & ((mobility_ranking == @mob) | (ucaas_ccaas_ranking == @uca) | (cyber_ranking == @cyb) | (DATA_Center_ranking == @data))
+
+    # df_selection = df_selection.astype({"mobility_ranking": int})
+    # df1selection = df1_selection.astype({"mobility_ranking": int})
+
+    # df_selection.sort_values(by = ['mobility_ranking'], ascending = False)
+    # df1_selection.sort_values(by = ['mobility_ranking'], ascending = False)
+
     # if mob == '1':
-    #     df_selection.sort_values('mobility_ranking')
-    #     df1_selection.sort_values('mobility_ranking')
+        
     # elif uca == '1':
     #     df_selection.sort_values('ucaas_ccaas_ranking')
     #     df1_selection.sort_values('ucaas_ccaas_ranking')
@@ -107,14 +117,6 @@ if authentication_status:
     # elif data == '1':
     #     df_selection.sort_values('DATA_Center_ranking')
     #     df1_selection.sort_values('DATA_Center_ranking')
-    
-    
-    
-
-    df_selection = dfshow.query('(State == @state)')
-    #  & ((mobility_ranking == @mob) | (ucaas_ccaas_ranking == @uca) | (cyber_ranking == @cyb) | (DATA_Center_ranking == @data))
-    df1_selection = dfex.query('(State == @state)')
-    # & ((mobility_ranking == @mob) | (ucaas_ccaas_ranking == @uca) | (cyber_ranking == @cyb) | (DATA_Center_ranking == @data))
 
      #Interactive Grid Component
     #https://towardsdatascience.com/make-dataframes-interactive-in-streamlit-c3d0c4f84ccb
