@@ -51,12 +51,12 @@ if authentication_status:
         return df
 
     if (admin_names.count(name) > 0):
-        dfshow = get_data_from_excel('NewShow', 'pdf_webapp1.xlsx')
-        dfex = get_data_from_excel('NewEx', 'pdf_webapp1.xlsx')
+        dfshow = get_data_from_excel('toshow', '07data.xlsx')
+        dfex = get_data_from_excel('todown', '07data.xlsx')
         print("admin")
     else:
-        dfshow = get_data_from_excel('NewShow', 'pdf_webapp.xlsx')
-        dfex = get_data_from_excel('NewEx', 'pdf_webapp.xlsx')
+        dfshow = get_data_from_excel('toshow', '07data.xlsx')
+        dfex = get_data_from_excel('todown', '07data.xlsx')
         print("non-admin")
     
     
