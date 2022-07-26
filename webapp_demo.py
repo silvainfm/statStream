@@ -95,6 +95,21 @@ if authentication_status:
     else:
         data ='0'
     
+    # if mob == '1':
+    #     df_selection.sort_values('mobility_ranking')
+    #     df1_selection.sort_values('mobility_ranking')
+    # elif uca == '1':
+    #     df_selection.sort_values('ucaas_ccaas_ranking')
+    #     df1_selection.sort_values('ucaas_ccaas_ranking')
+    # elif cyb == '1':
+    #     df_selection.sort_values('cyber_ranking')
+    #     df1_selection.sort_values('cyber_ranking')
+    # elif data == '1':
+    #     df_selection.sort_values('DATA_Center_ranking')
+    #     df1_selection.sort_values('DATA_Center_ranking')
+    
+    
+    
 
     df_selection = dfshow.query('(State == @state)')
     #  & ((mobility_ranking == @mob) | (ucaas_ccaas_ranking == @uca) | (cyber_ranking == @cyb) | (DATA_Center_ranking == @data))
