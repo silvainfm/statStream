@@ -27,7 +27,7 @@ authenticator = stauth.Authenticate(names, usernames, hashed_passwords,
     'cOOkiE_poStSHowcHasINgAlL', 'keyY1969chasinGthEshoWsS', cookie_expiry_days=0)
 
 # path_image = Path(__file__) / 'chasetek.jpg' # demo file 
-st.image('images/chasetek.jpg', caption = 'powered by StatStorm', width = 400)
+st.image('images/Statstorm.png', width = 400)
 
 name, authentication_status, username = authenticator.login('Login','main')
 
@@ -96,8 +96,10 @@ if authentication_status:
         data ='0'
     
 
-    df_selection = dfshow.query('(State == @state) & ((mobility_ranking == @mob) | (ucaas_ccaas_ranking == @uca) | (cyber_ranking == @cyb) | (DATA_Center_ranking == @data))')
-    df1_selection = dfex.query('(State == @state) & ((mobility_ranking == @mob) | (ucaas_ccaas_ranking == @uca) | (cyber_ranking == @cyb) | (DATA_Center_ranking == @data))')
+    df_selection = dfshow.query('(State == @state)')
+    #  & ((mobility_ranking == @mob) | (ucaas_ccaas_ranking == @uca) | (cyber_ranking == @cyb) | (DATA_Center_ranking == @data))
+    df1_selection = dfex.query('(State == @state)')
+    # & ((mobility_ranking == @mob) | (ucaas_ccaas_ranking == @uca) | (cyber_ranking == @cyb) | (DATA_Center_ranking == @data))
 
      #Interactive Grid Component
     #https://towardsdatascience.com/make-dataframes-interactive-in-streamlit-c3d0c4f84ccb
