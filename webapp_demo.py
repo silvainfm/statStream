@@ -1,23 +1,25 @@
 from sys import path_importer_cache
 from docxtpl import DocxTemplate
-import docx
+# import docx
 import pandas as pd
 import streamlit as st
 import streamlit_authenticator as stauth
 from pathlib import Path
 from docx2pdf import convert
+# import fpdf
+from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 
 # instead of creating the word docs in the app, have em ready in github folder
 st.set_page_config(page_title='Beta Dashboard', layout='wide')
 
 # https://github.com/mkhorasani/Streamlit-Authenticator
-names = ['demo_email', 'rick_sanchez']
-usernames = ['demo','rsanchez']
-passwords = ['demo_acct', 'morty']
+names = ['demo_email', 'rick_sanchez', 'nick']
+usernames = ['demo','rsanchez', 'nwolfe']
+passwords = ['demo_acct', 'morty', 'fred']
 
-admin_names = ['demo_email']
-admin_usernames = ['demo']
-admin_passwords = ['demo_acct']
+admin_names = ['demo_email', 'nick']
+admin_usernames = ['demo', 'nwolfe']
+admin_passwords = ['demo_acct', 'fred']
 
 hashed_passwords = stauth.Hasher(passwords).generate()
 
@@ -97,12 +99,43 @@ if authentication_status:
     df_selection = dfshow.query('(State == @state) & ((mobility_ranking == @mob) | (ucaas_ccaas_ranking == @uca) | (cyber_ranking == @cyb) | (DATA_Center_ranking == @data))')
     df1_selection = dfex.query('(State == @state) & ((mobility_ranking == @mob) | (ucaas_ccaas_ranking == @uca) | (cyber_ranking == @cyb) | (DATA_Center_ranking == @data))')
 
-    st.dataframe(df_selection)
+     #Interactive Grid Component
+    #https://towardsdatascience.com/make-dataframes-interactive-in-streamlit-c3d0c4f84ccb
 
-    selected_indices = st.multiselect('Select rows:', df_selection.index)
-    selected_rows = df_selection.loc[selected_indices]
-    df1_selected = df1_selection.loc[selected_indices]
+    gb = GridOptionsBuilder.from_dataframe(df_selection)
+    gb.configure_pagination(paginationAutoPageSize=True) #Add pagination
+    gb.configure_side_bar() #Add a sidebar
+    gb.configure_selection('multiple', use_checkbox=True, groupSelectsChildren="Group checkbox select children") #Enable multi-row selection
+    gridOptions = gb.build()
+
+    grid_response = AgGrid(
+        df_selection,
+        gridOptions=gridOptions,
+        data_return_mode='AS_INPUT', 
+        update_mode='MODEL_CHANGED', 
+        fit_columns_on_grid_load=False,
+        theme = 'streamlit', #Add theme color to the table
+        enable_enterprise_modules=True, #displays filter if true
+        height=350, 
+        reload_data=True
+    )
+
+    data = grid_response['data']
+    selected = grid_response['selected_rows'] 
+    df = pd.DataFrame(selected) #Pass the selected rows to a new dataframe df
+
+    #Use session_state to store selected df so it doesnt delete on reload
+    # selected_indices = st.multiselect('Select rows:', df_selection.index)
+    selected_rows = df #df_selection.loc[selected_indices]
+    df1_selected = df # df1_selection.loc[selected_indices]
     st.write('### Current Selection', selected_rows)
+    
+    # st.dataframe(df_selection)
+
+    # selected_indices = st.multiselect('Select rows:', df_selection.index)
+    # selected_rows = df_selection.loc[selected_indices]
+    # df1_selected = df1_selection.loc[selected_indices]
+    # st.write('### Current Selection', selected_rows)
 
     # CSV Download buttons 
     export_choice = st.radio('Do you want to export the current selection or all companies to Excel?', ('Current Selection', 'All companies'))
