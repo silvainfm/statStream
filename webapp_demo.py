@@ -321,7 +321,7 @@ if authentication_status:
         btn = st.download_button(
              label='Export to PDF',
              data=file,
-             file_name=f'{company}_report.pdf')
+             file_name=f'{company}_report_c.pdf')
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
