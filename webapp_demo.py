@@ -331,12 +331,12 @@ if authentication_status:
 
     # Store word docs in github and allow the user to download from there
     company = st.selectbox('Select Company to export:', dfshow.index)
-    file_path = f'docs1/{company}_report.pdf'
+    file_path = f'pdfj22/{company}_report_c.pdf'
     with open(file_path, 'rb') as file:
         btn = st.download_button(
              label='Export to PDF',
              data=file,
-             file_name=f'{company}_report.pdf')
+             file_name=f'{company}_report_c.pdf')
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
