@@ -13,18 +13,18 @@ from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 st.set_page_config(page_title='Beta Dashboard', layout='wide')
 
 # https://github.com/mkhorasani/Streamlit-Authenticator
-names = ['demo_email', 'rick_sanchez', 'nick']
-usernames = ['demo','rsanchez', 'nwolfe']
-passwords = ['demo_acct', 'morty', 'fred']
+names = ['demo_email', 'rick_sanchez', 'nick', 'mike']
+usernames = ['demo','rsanchez', 'nwolfe', 'rackspace']
+passwords = ['demo_acct', 'morty', 'fred', 'rackspace2022']
 
-admin_names = ['demo_email', 'nick']
-admin_usernames = ['demo', 'nwolfe']
-admin_passwords = ['demo_acct', 'fred']
+admin_names = ['demo_email', 'nick', 'mike']
+admin_usernames = ['demo', 'nwolfe', 'rackspace']
+admin_passwords = ['demo_acct', 'fred', 'rackspace2022']
 
 hashed_passwords = stauth.Hasher(passwords).generate()
 
 authenticator = stauth.Authenticate(names, usernames, hashed_passwords,
-    'cOOkiE_poStSHowcHasINgAlL', 'keyY1969chasinGthEshoWsS', cookie_expiry_days=0)
+    'cOOkiE_poStSHowcHasINgAlL', 'keyY1969chasinGthEshoWsS', cookie_expiry_days=1)
 
 # path_image = Path(__file__) / 'chasetek.jpg' # demo file 
 st.image('images/Statstorm.png', width = 400)
@@ -67,56 +67,32 @@ if authentication_status:
     state = st.sidebar.multiselect('Select the State:',
         options=dfshow['State'].unique())
 
+    df_selection = dfshow.query('(State == @state)')
+    df1_selection = dfex.query('(State == @state)')
+
     mobility_score = st.sidebar.radio('Are you selling Mobility Solutions?',
         ['Yes', 'No'])
     if mobility_score == 'Yes':
-        mob = '1'
-    else:
-        mob ='0'
+        df_selection.sort_values(by = ['mobility_ranking'], ascending = True, inplace = True)
+    df1_selection.sort_values(by = ['mobility_ranking'], ascending = True, inplace = True)
 
     ucaas_score = st.sidebar.radio('Are you selling Ucaas/Ccaas solutions?',
         ['Yes', 'No'])
     if ucaas_score == 'Yes':
-        uca = '1'
-    else:
-        uca ='0'
+        df_selection.sort_values(by = ['ucaas_ccaas_ranking'], ascending = True, inplace = True)
+        df1_selection.sort_values(by = ['ucaas_ccaas_ranking'], ascending = True, inplace = True)
 
     cyber_score = st.sidebar.radio('Are you selling Cybersecurity solutions?',
         ['Yes', 'No'])
     if cyber_score == 'Yes':
-        cyb = '1'
-    else:
-        cyb ='0'
+        df_selection.sort_values(by = ['cyber_ranking'], ascending = True, inplace = True)
+        df1_selection.sort_values(by = ['cyber_ranking'], ascending = True, inplace = True)
 
     data_score = st.sidebar.radio('Are you selling the Data Center?',
         ['Yes', 'No'])
     if data_score == 'Yes':
-        data = '1'
-    else:
-        data ='0'
-    
-    df_selection = dfshow.query('(State == @state)')
-    #  & ((mobility_ranking == @mob) | (ucaas_ccaas_ranking == @uca) | (cyber_ranking == @cyb) | (DATA_Center_ranking == @data))
-    df1_selection = dfex.query('(State == @state)')
-    # & ((mobility_ranking == @mob) | (ucaas_ccaas_ranking == @uca) | (cyber_ranking == @cyb) | (DATA_Center_ranking == @data))
-
-    # df_selection = df_selection.astype({"mobility_ranking": int})
-    # df1selection = df1_selection.astype({"mobility_ranking": int})
-
-    # df_selection.sort_values(by = ['mobility_ranking'], ascending = False)
-    # df1_selection.sort_values(by = ['mobility_ranking'], ascending = False)
-
-    # if mob == '1':
-        
-    # elif uca == '1':
-    #     df_selection.sort_values('ucaas_ccaas_ranking')
-    #     df1_selection.sort_values('ucaas_ccaas_ranking')
-    # elif cyb == '1':
-    #     df_selection.sort_values('cyber_ranking')
-    #     df1_selection.sort_values('cyber_ranking')
-    # elif data == '1':
-    #     df_selection.sort_values('DATA_Center_ranking')
-    #     df1_selection.sort_values('DATA_Center_ranking')
+        df_selection.sort_values(by = ['DATA_Center_ranking'], ascending = True, inplace = True)
+        df1_selection.sort_values(by = ['DATA_Center_ranking'], ascending = True, inplace = True)
 
      #Interactive Grid Component
     #https://towardsdatascience.com/make-dataframes-interactive-in-streamlit-c3d0c4f84ccb
