@@ -88,7 +88,7 @@ if authentication_status:
         df_selection.sort_values(by = ['cyber_ranking'], ascending = True, inplace = True)
         df1_selection.sort_values(by = ['cyber_ranking'], ascending = True, inplace = True)
 
-    data_score = st.sidebar.radio('Are you selling the Data Center?',
+    data_score = st.sidebar.radio('Are you selling Data Center solutions?',
         ['Yes', 'No'])
     if data_score == 'Yes':
         df_selection.sort_values(by = ['DATA_Center_ranking'], ascending = True, inplace = True)
