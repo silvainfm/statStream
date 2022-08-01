@@ -74,7 +74,7 @@ if authentication_status:
         ['Yes', 'No'])
     if mobility_score == 'Yes':
         df_selection.sort_values(by = ['mobility_ranking'], ascending = True, inplace = True)
-    df1_selection.sort_values(by = ['mobility_ranking'], ascending = True, inplace = True)
+        df1_selection.sort_values(by = ['mobility_ranking'], ascending = True, inplace = True)
 
     ucaas_score = st.sidebar.radio('Are you selling Ucaas/Ccaas solutions?',
         ['Yes', 'No'])
