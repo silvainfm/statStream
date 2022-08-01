@@ -70,7 +70,7 @@ if authentication_status:
     df_selection = dfshow.query('(State == @state)')
     df1_selection = dfex.query('(State == @state)')
 
-    mobility_score = st.sidebar.radio('Are you selling Mobility Solutions?',
+    mobility_score = st.sidebar.radio('Are you selling Mobility solutions?',
         ['Yes', 'No'])
     if mobility_score == 'Yes':
         df_selection.sort_values(by = ['mobility_ranking'], ascending = True, inplace = True)
