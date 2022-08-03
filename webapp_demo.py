@@ -47,7 +47,7 @@ if authentication_status:
             engine = 'openpyxl',
             sheet_name = sheet)
         df = df.astype(str)
-        df.set_index('Company', inplace=True)
+        #df.set_index('Company', inplace=True)
         return df
 
     if (admin_names.count(name) > 0):
