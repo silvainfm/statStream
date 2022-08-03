@@ -51,12 +51,12 @@ if authentication_status:
         return df
 
     if (admin_names.count(name) > 0):
-        dfshow = get_data_from_excel('toshow', '07data.xlsx')
-        dfex = get_data_from_excel('todown', '07data.xlsx')
+        dfshow = get_data_from_excel('toshow', '07datac.xlsx')
+        dfex = get_data_from_excel('todown', '07datac.xlsx')
         print("admin")
     else:
-        dfshow = get_data_from_excel('toshow', '07data.xlsx')
-        dfex = get_data_from_excel('todown', '07data.xlsx')
+        dfshow = get_data_from_excel('toshow', '07datac.xlsx')
+        dfex = get_data_from_excel('todown', '07datac.xlsx')
         print("non-admin")
     
     
@@ -73,26 +73,32 @@ if authentication_status:
     mobility_score = st.sidebar.radio('Are you selling Mobility solutions?',
         ['Yes', 'No'])
     if mobility_score == 'Yes':
-        df_selection.sort_values(by = ['mobility_ranking'], ascending = True, inplace = True)
-        df1_selection.sort_values(by = ['mobility_ranking'], ascending = True, inplace = True)
+        df_selection.sort_values(by = ['mobility_total_kcount'], ascending = True, inplace = True)
+        df1_selection.sort_values(by = ['mobility_total_kcount'], ascending = True, inplace = True)
 
     ucaas_score = st.sidebar.radio('Are you selling Ucaas/Ccaas solutions?',
         ['Yes', 'No'])
     if ucaas_score == 'Yes':
-        df_selection.sort_values(by = ['ucaas_ccaas_ranking'], ascending = True, inplace = True)
-        df1_selection.sort_values(by = ['ucaas_ccaas_ranking'], ascending = True, inplace = True)
-
+        df_selection.sort_values(by = ['ucaas_ccaas_total_kcount'], ascending = True, inplace = True)
+        df1_selection.sort_values(by = ['ucaas_ccaas_total_kcount'], ascending = True, inplace = True)
+        
+    cloud_score = st.sidebar.radio('Are you selling Cloud solutions?',
+        ['Yes', 'No'])
+    if cloud_score == 'Yes':
+        df_selection.sort_values(by = ['cloud_total_kcount'], ascending = True, inplace = True)
+        df1_selection.sort_values(by = ['cloud_total_kcount'], ascending = True, inplace = True)
+        
     cyber_score = st.sidebar.radio('Are you selling Cybersecurity solutions?',
         ['Yes', 'No'])
     if cyber_score == 'Yes':
-        df_selection.sort_values(by = ['cyber_ranking'], ascending = True, inplace = True)
-        df1_selection.sort_values(by = ['cyber_ranking'], ascending = True, inplace = True)
+        df_selection.sort_values(by = ['cyber_total_kcount'], ascending = True, inplace = True)
+        df1_selection.sort_values(by = ['cyber_total_kcount'], ascending = True, inplace = True)
 
     data_score = st.sidebar.radio('Are you selling Data Center solutions?',
         ['Yes', 'No'])
     if data_score == 'Yes':
-        df_selection.sort_values(by = ['DATA_Center_ranking'], ascending = True, inplace = True)
-        df1_selection.sort_values(by = ['DATA_Center_ranking'], ascending = True, inplace = True)
+        df_selection.sort_values(by = ['DATA_Center_total_kcount'], ascending = True, inplace = True)
+        df1_selection.sort_values(by = ['DATA_Center_total_kcount'], ascending = True, inplace = True)
 
      #Interactive Grid Component
     #https://towardsdatascience.com/make-dataframes-interactive-in-streamlit-c3d0c4f84ccb
