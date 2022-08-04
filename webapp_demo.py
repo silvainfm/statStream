@@ -314,7 +314,7 @@ if authentication_status:
         return pdf
 
     # Store word docs in github and allow the user to download from there
-    company = st.selectbox('Select Company to export:', dfshow.index)
+    company = st.selectbox('Select Company to export:', dfshow.Company)
     file_path = f'pdfj22/{company}_report_c.pdf'
     with open(file_path, 'rb') as file:
         btn = st.download_button(
