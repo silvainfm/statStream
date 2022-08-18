@@ -328,10 +328,11 @@ elif authentication_status == False:
 elif authentication_status == None:
     st.warning('Please enter your username and password')
 
+
 # Improvements
 
 # Provide 2 options:
-# export en massse (all selection in one file) (MAX 10)
+# export en masse (all selection in one file) (MAX 10)
 # export separately 
 
 # Add logo to the page
