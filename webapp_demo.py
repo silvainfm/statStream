@@ -97,8 +97,8 @@ if authentication_status:
     data_score = st.sidebar.radio('Are you selling Data Center solutions?',
         ['Yes', 'No'])
     if data_score == 'Yes':
-        df_selection.sort_values(by = ['DATA_Center_total_kcount'], ascending = False, inplace = True)
-        df1_selection.sort_values(by = ['DATA_Center_total_kcount'], ascending = False, inplace = True)
+        df_selection.sort_values(by = ['data_center_total_kcount'], ascending = False, inplace = True)
+        df1_selection.sort_values(by = ['data_center_total_kcount'], ascending = False, inplace = True)
 
      #Interactive Grid Component
     #https://towardsdatascience.com/make-dataframes-interactive-in-streamlit-c3d0c4f84ccb
