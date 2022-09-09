@@ -13,9 +13,9 @@ from st_aggrid import GridOptionsBuilder, AgGrid, GridUpdateMode, DataReturnMode
 st.set_page_config(page_title='Beta Dashboard', layout='wide')
 
 # https://github.com/mkhorasani/Streamlit-Authenticator
-names = ['demo_email', 'rick_sanchez', 'nick', 'mike']
-usernames = ['demo','rsanchez', 'nwolfe', 'rackspace']
-passwords = ['demo_acct', 'morty', 'fred', 'rackspace2022']
+names = ['demo_email', 'rick_sanchez', 'nick', 'mike', 'brandon']
+usernames = ['demo','rsanchez', 'nwolfe', 'rackspace', 'bmoore']
+passwords = ['demo_acct', 'morty', 'fred', 'rackspace2022', 'rackspace2022b']
 
 admin_names = ['demo_email', 'nick', 'mike']
 admin_usernames = ['demo', 'nwolfe', 'rackspace']
