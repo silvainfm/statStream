@@ -73,8 +73,8 @@ if authentication_status:
     mobility_score = st.sidebar.radio('Are you selling Mobility solutions?',
         ['Yes', 'No'])
     if mobility_score == 'Yes':
-        df_selection.sort_values(by = ['mobility_total_kcount'], ascending = False, inplace = True)
-        df1_selection.sort_values(by = ['mobility_total_kcount'], ascending = False, inplace = True)
+        df_selection.sort_values(by = ['mobility_total_kcount'], ascending = True, inplace = True)
+        df1_selection.sort_values(by = ['mobility_total_kcount'], ascending = True, inplace = True)
 
     ucaas_score = st.sidebar.radio('Are you selling Ucaas/Ccaas solutions?',
         ['Yes', 'No'])
