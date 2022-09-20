@@ -51,12 +51,12 @@ if authentication_status:
         return df
 
     if (admin_names.count(name) > 0):
-        dfshow = get_data_from_excel('toshow', 'leaddata.xlsx')
-        dfex = get_data_from_excel('todown', 'leaddata.xlsx')
+        dfshow = pd.read_csv('leads.csv')
+        dfex = pd.read_csv('leadd.csv')
         print("admin")
     else:
-        dfshow = get_data_from_excel('toshow', 'leaddata.xlsx')
-        dfex = get_data_from_excel('todown', 'leaddata.xlsx')
+        dfshow = pd.read_csv('leads.csv')
+        dfex = pd.read_csv('leadd.csv')
         print("non-admin")
     
     
