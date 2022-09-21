@@ -163,7 +163,7 @@ if authentication_status:
             file_name='all_leads.csv', 
             mime='text/csv')
 
-    # Store word docs in github and allow the user to download from there
+    # Store pdfs in github and allow the user to download from there
     company = st.selectbox('Select Company to export:', dfshow.Company)
     file_path = f'npdfs/{company}_report_c.pdf'
     with open(file_path, 'rb') as file:
