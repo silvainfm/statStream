@@ -180,10 +180,12 @@ if authentication_status:
                     data=file,
                     file_name=f'{company}_report_c.pdf')
         return btn 
-
-    companies = dfshow.Company.to_list()
-    for c in companies: 
-        to_pdf(c)
+    
+    button_bpdf = st.button(label = 'Export you current selection to PDF')
+    if button_bpdf:
+        companies = dfshow.Company.to_list()
+        for c in companies: 
+            to_pdf(c)
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
