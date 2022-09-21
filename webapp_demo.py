@@ -177,11 +177,11 @@ if authentication_status:
         for c in companies: 
             file_path = f'npdfs/{c}_report_c.pdf'
         with open(file_path, 'rb') as file:
-            st.download_button(
+            file2 = st.download_button(
                 label='Export to PDF',
                 data=file,
                 file_name= [f'{c}_report_c.pdf' for c in companies])
-        return file
+        return file2
     
     button_bpdf = st.button(label = 'Export you current selection to PDF')
     if button_bpdf:
