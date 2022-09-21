@@ -172,20 +172,20 @@ if authentication_status:
              data=file,
              file_name=f'{company}_report_c.pdf')
 
-    def to_pdf(company):
-        file_path = f'npdfs/{company}_report_c.pdf'
+    def to_pdf():
+        companies = dfshow.Company.to_list()
+        for c in companies: 
+            file_path = f'npdfs/{c}_report_c.pdf'
         with open(file_path, 'rb') as file:
             st.download_button(
                 label='Export to PDF',
                 data=file,
-                file_name=f'{company}_report_c.pdf')
+                file_name= [f'{c}_report_c.pdf' for c in companies])
         return file
     
     button_bpdf = st.button(label = 'Export you current selection to PDF')
     if button_bpdf:
-        companies = dfshow.Company.to_list()
-        for c in companies: 
-            to_pdf(c)
+        to_pdf()
 
 elif authentication_status == False:
     st.error('Username/password is incorrect')
