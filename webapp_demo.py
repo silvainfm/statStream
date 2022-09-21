@@ -40,10 +40,20 @@ if authentication_status:
 
     # ---- READ EXCEL ----
     @st.cache
-    if (admin_names.count(name) > 0):
+    def get_data_from_excel(sheet, excelFileName):
+         path_excel = excelFileName # demo file 
+         df = pd.read_excel(
+             io = path_excel,
+             engine = 'openpyxl',
+             sheet_name = sheet)
+        
+         return df
+
+    if admin_names.count(name) > 0:
         dfshow = pd.read_csv('leads.csv')
         dfex = pd.read_csv('leadd.csv')
         print("admin")
+
     else:
         dfshow = pd.read_csv('leads.csv')
         dfex = pd.read_csv('leadd.csv')
