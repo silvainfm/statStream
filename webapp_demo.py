@@ -175,11 +175,11 @@ if authentication_status:
     def to_pdf(company):
         file_path = f'npdfs/{company}_report_c.pdf'
         with open(file_path, 'rb') as file:
-            btn = st.download_button(
-                    label='Export to PDF',
-                    data=file,
-                    file_name=f'{company}_report_c.pdf')
-        return btn 
+            st.download_button(
+                label='Export to PDF',
+                data=file,
+                file_name=f'{company}_report_c.pdf')
+        return file
     
     button_bpdf = st.button(label = 'Export you current selection to PDF')
     if button_bpdf:
