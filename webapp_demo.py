@@ -61,6 +61,10 @@ if authentication_status:
     
     # ---- SIDEBAR ----
     st.sidebar.header('Please Filter Here:')
+    
+    # add gov = st.sidebar.radio for gov or not gov 
+    # if gov == Yes select rows where email contains .gov 
+    # else select rows where not equal 
 
     state = st.sidebar.multiselect('Select the State:',
         options=['All', 'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA',
