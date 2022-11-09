@@ -50,13 +50,13 @@ if authentication_status:
          return df
 
     if admin_names.count(name) > 0:
-        dfshow = pd.read_csv('leads.csv')
-        dfex = pd.read_csv('leadd.csv')
+        dfshow = pd.read_csv('masternewleads.csv')
+        dfex = pd.read_csv('masternewleads.csv')
         print("admin")
 
     else:
-        dfshow = pd.read_csv('leads.csv')
-        dfex = pd.read_csv('leadd.csv')
+        dfshow = pd.read_csv('masternewleads.csv')
+        dfex = pd.read_csv('masternewleads.csv')
         print("non-admin")
     
     # ---- SIDEBAR ----
