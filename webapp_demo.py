@@ -65,6 +65,10 @@ if authentication_status:
     # add gov = st.sidebar.radio for gov or not gov 
     # if gov == Yes select rows where email contains .gov 
     # else select rows where not equal 
+    
+    # add filter for most recent data
+    # recent = st.sidebar.radio('Do you want to filter by the most recent date of the data?',
+    # ['Yes', 'No'])
 
     state = st.sidebar.multiselect('Select the State:',
         options=['All', 'AK', 'AL', 'AR', 'AZ', 'CA', 'CO', 'CT', 'DC', 'DE', 'FL', 'GA',
