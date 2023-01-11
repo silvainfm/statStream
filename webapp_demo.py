@@ -65,6 +65,8 @@ if authentication_status:
     # add gov = st.sidebar.radio for gov or not gov 
     # if gov == Yes select rows where email contains .gov 
     # else select rows where not equal 
+    # edu = newdf[newdf['Website'].str.contains('edu|gov|fl.us|ny.us')]
+    # notedu = newdf[~newdf['Website'].str.contains('edu|gov|fl.us|ny.us')]
     
     # add filter for most recent data
     # recent = st.sidebar.radio('Do you want to filter by the most recent date of the data?',
