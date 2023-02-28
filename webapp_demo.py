@@ -31,6 +31,9 @@ st.image('images/leadst.png', width = 400)
 
 name, authentication_status, username = authenticator.login('Login','main')
 
+# to add as feature: selection of certain columns to filter by like the states 
+# when user selects a column to filter --> new filters pop up in the side bar
+
 if authentication_status:
     # emojis: https://www.webfx.com/tools/emoji-cheat-sheet/
 
