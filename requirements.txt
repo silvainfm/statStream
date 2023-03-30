@@ -6,3 +6,4 @@ click<=8.0.4
 docxtpl==0.16.0
 streamlit_aggrid == 0.2.3.post2
 docx2pdf==0.1.8
+pypdf2==1.27.4
